@@ -1,7 +1,9 @@
+import EditSection from "./EditSection";
+
 function MainSection() {
   return (
     <main>
-      <div className="edit-section"></div>
+      <EditSection />
       <div className="display-section"></div>
     </main>
   );
