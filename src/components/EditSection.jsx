@@ -1,4 +1,5 @@
 import Education from "./Education";
+import Experience from "./Experience";
 import GeneralInfo from "./GeneralInfo";
 
 function EditSection() {
@@ -6,6 +7,7 @@ function EditSection() {
     <div className="edit-section">
       <GeneralInfo />
       <Education />
+      <Experience />
     </div>
   );
 }
