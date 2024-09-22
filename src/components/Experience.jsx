@@ -1,3 +1,4 @@
+import MainRespAdder from "./MainRespAdder";
 import MonthSelector from "./MonthSelector";
 
 function Experience() {
@@ -38,6 +39,8 @@ function Experience() {
           />
         </div>
       </div>
+
+      <MainRespAdder />
     </section>
   );
 }
