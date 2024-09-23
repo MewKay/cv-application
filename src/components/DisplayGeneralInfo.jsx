@@ -1,4 +1,5 @@
 import resumeData from "../resumeData";
+import EditButton from "./EditButton";
 
 function DisplayGeneralInfo() {
   const general = resumeData.generalInfo;
@@ -10,6 +11,7 @@ function DisplayGeneralInfo() {
         <p className="display-email">{general.email}</p>
         <p className="display-phone-number">{general.phoneNumber}</p>
       </div>
+      <EditButton />
     </div>
   );
 }

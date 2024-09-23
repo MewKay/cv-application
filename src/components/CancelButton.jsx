@@ -1,8 +1,12 @@
-function CancelButton({ className, handleClick }) {
+import Button from "./Button";
+
+function CancelButton({ handleClick }) {
   return (
-    <button className={className} onClick={handleClick}>
-      Cancel
-    </button>
+    <Button
+      className={"cancel-button"}
+      buttonText={"Cancel"}
+      handleClick={handleClick}
+    />
   );
 }
 

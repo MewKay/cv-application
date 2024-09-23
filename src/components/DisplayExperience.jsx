@@ -1,4 +1,5 @@
 import resumeData from "../resumeData";
+import EditButton from "./EditButton";
 
 function DisplayExperienceItem({ experienceItem }) {
   return (
@@ -13,6 +14,7 @@ function DisplayExperienceItem({ experienceItem }) {
           <li key={crypto.randomUUID()}>{mainRespItem}</li>
         ))}
       </ul>
+      <EditButton />
     </div>
   );
 }

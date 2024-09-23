@@ -1,4 +1,5 @@
 import resumeData from "../resumeData";
+import EditButton from "./EditButton";
 
 function DisplayEducationItem({ educationItem }) {
   return (
@@ -8,6 +9,7 @@ function DisplayEducationItem({ educationItem }) {
         <p className="display-end-date">{educationItem.endDate}</p>
       </div>
       <p className="display-study-title">{educationItem.studyTitle}</p>
+      <EditButton />
     </div>
   );
 }

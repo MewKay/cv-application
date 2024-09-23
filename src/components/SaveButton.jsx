@@ -1,8 +1,12 @@
-function SaveButton({ className, handleClick }) {
+import Button from "./Button";
+
+function SaveButton({ handleClick }) {
   return (
-    <button className={className} onClick={handleClick}>
-      Save
-    </button>
+    <Button
+      className={"save-button"}
+      buttonText={"Save"}
+      handleClick={handleClick}
+    />
   );
 }
 
