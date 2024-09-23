@@ -8,7 +8,7 @@ function TextInput() {
   );
 }
 
-function MainRespAdder() {
+function MainRespAdder({ className }) {
   const [listTextInput, setListTextInput] = useState([
     <TextInput key={crypto.randomUUID()} />,
   ]);
@@ -21,7 +21,7 @@ function MainRespAdder() {
   }
 
   return (
-    <fieldset>
+    <fieldset className={className}>
       <legend>Main Responsibilities :</legend>
       <ul>
         {listTextInput}

@@ -2,6 +2,9 @@ import MainRespAdder from "./MainRespAdder";
 import MonthSelector from "./MonthSelector";
 
 function Experience() {
+  const inputClassName = "experience-input";
+  const companyNameInputId = "company-name-input";
+  const positionTitleInputId = "position-title-input";
   const workDurationSelectClass = "work-duration-select-class";
   const workStartNamePartId = "work-start";
   const workEndNamePartId = "work-end";
@@ -10,17 +13,17 @@ function Experience() {
     <section>
       <h2>Add Experience</h2>
 
-      <div>
-        <label>Company Name :</label>
-        <input type="text" required></input>
+      <div className={inputClassName}>
+        <label htmlFor={companyNameInputId}>Company Name :</label>
+        <input id={companyNameInputId} type="text" required></input>
       </div>
 
-      <div>
-        <label>Position Title :</label>
-        <input type="text" required></input>
+      <div className={inputClassName}>
+        <label htmlFor={positionTitleInputId}>Position Title :</label>
+        <input id={positionTitleInputId} type="text" required></input>
       </div>
 
-      <fieldset>
+      <fieldset className={inputClassName}>
         <legend>Work Duration :</legend>
 
         <div id="work-start-select">
@@ -40,7 +43,7 @@ function Experience() {
         </div>
       </fieldset>
 
-      <MainRespAdder />
+      <MainRespAdder className={inputClassName} />
     </section>
   );
 }
