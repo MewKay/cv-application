@@ -33,13 +33,15 @@ function GeneralInfo() {
 
   return (
     <section id="general-info-section">
-      <h2>General Informations</h2>
-      <FullNameInput className={inputClassName} inputId={fullNameInputId} />
-      <EmailInput className={inputClassName} inputId={emailInputId} />
-      <PhoneNumberInput
-        className={inputClassName}
-        inputId={phoneNumberInputId}
-      />
+      <form>
+        <h2>General Informations</h2>
+        <FullNameInput className={inputClassName} inputId={fullNameInputId} />
+        <EmailInput className={inputClassName} inputId={emailInputId} />
+        <PhoneNumberInput
+          className={inputClassName}
+          inputId={phoneNumberInputId}
+        />
+      </form>
     </section>
   );
 }

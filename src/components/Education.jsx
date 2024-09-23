@@ -36,14 +36,22 @@ function Education() {
 
   return (
     <section id="education-section">
-      <h2>Add Education</h2>
-      <SchoolNameInput className={inputClassName} inputId={schoolNameInputId} />
-      <StudyTitleInput className={inputClassName} inputId={studyTitleInputId} />
-      <EducationEndDateInput
-        className={inputClassName}
-        inputId={educationEndDateInputId}
-        namePartId={namePartId}
-      />
+      <form>
+        <h2>Add Education</h2>
+        <SchoolNameInput
+          className={inputClassName}
+          inputId={schoolNameInputId}
+        />
+        <StudyTitleInput
+          className={inputClassName}
+          inputId={studyTitleInputId}
+        />
+        <EducationEndDateInput
+          className={inputClassName}
+          inputId={educationEndDateInputId}
+          namePartId={namePartId}
+        />
+      </form>
     </section>
   );
 }

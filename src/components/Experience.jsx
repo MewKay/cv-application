@@ -91,22 +91,24 @@ function Experience() {
 
   return (
     <section>
-      <h2>Add Experience</h2>
-      <CompanyNameInput
-        className={inputClassName}
-        inputId={companyNameInputId}
-      />
-      <PositionTitleInput
-        className={inputClassName}
-        inputId={positionTitleInputId}
-      />
-      <WorkDurationInput
-        className={inputClassName}
-        workDurationSelectClass={workDurationSelectClass}
-        workStartNamePartId={workStartNamePartId}
-        workEndNamePartId={workEndNamePartId}
-      />
-      <MainRespAdder className={inputClassName} />
+      <form>
+        <h2>Add Experience</h2>
+        <CompanyNameInput
+          className={inputClassName}
+          inputId={companyNameInputId}
+        />
+        <PositionTitleInput
+          className={inputClassName}
+          inputId={positionTitleInputId}
+        />
+        <WorkDurationInput
+          className={inputClassName}
+          workDurationSelectClass={workDurationSelectClass}
+          workStartNamePartId={workStartNamePartId}
+          workEndNamePartId={workEndNamePartId}
+        />
+        <MainRespAdder className={inputClassName} />
+      </form>
     </section>
   );
 }
