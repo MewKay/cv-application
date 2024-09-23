@@ -38,7 +38,11 @@ function Education() {
 
   return (
     <section id="education-section">
-      <form>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
         <h2>Add Education</h2>
         <SchoolNameInput
           className={inputClassName}

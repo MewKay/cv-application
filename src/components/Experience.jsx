@@ -93,7 +93,11 @@ function Experience() {
 
   return (
     <section>
-      <form>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
         <h2>Add Experience</h2>
         <CompanyNameInput
           className={inputClassName}

@@ -36,7 +36,11 @@ function GeneralInfo() {
 
   return (
     <section id="general-info-section">
-      <form>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
         <h2>General Informations</h2>
         <FullNameInput className={inputClassName} inputId={fullNameInputId} />
         <EmailInput className={inputClassName} inputId={emailInputId} />
