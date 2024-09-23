@@ -110,11 +110,11 @@ function Experience() {
           workEndNamePartId={workEndNamePartId}
         />
         <MainRespAdder className={inputClassName} />
+        <div className="button-section">
+          <SaveButton />
+          <CancelButton />
+        </div>
       </form>
-      <div className="button-section">
-        <SaveButton />
-        <CancelButton />
-      </div>
     </section>
   );
 }
