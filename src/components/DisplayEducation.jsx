@@ -23,7 +23,7 @@ function DisplayEducation() {
           return (
             <DisplayEducationItem
               educationItem={educationItem}
-              key={crypto.randomUUID}
+              key={crypto.randomUUID()}
             />
           );
         })}
