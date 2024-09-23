@@ -21,10 +21,10 @@ function Education() {
         <input id={studyTitleInputId} type="text" required></input>
       </div>
 
-      <div className={inputClassName}>
-        <label>Completion By :</label>
+      <fieldset className={inputClassName}>
+        <legend>Completion By :</legend>
         <MonthSelector id={educationEndDateInputId} namePartId={namePartId} />
-      </div>
+      </fieldset>
     </section>
   );
 }
