@@ -1,10 +1,11 @@
 import EditSection from "./EditSection";
+import DisplaySection from "./DisplaySection";
 
 function MainSection() {
   return (
     <main>
       <EditSection />
-      <div className="display-section"></div>
+      <DisplaySection />
     </main>
   );
 }
