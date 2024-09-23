@@ -1,4 +1,6 @@
+import CancelButton from "./CancelButton";
 import MonthSelector from "./MonthSelector";
+import SaveButton from "./SaveButton";
 
 function SchoolNameInput({ className, inputId }) {
   return (
@@ -51,6 +53,11 @@ function Education() {
           inputId={educationEndDateInputId}
           namePartId={namePartId}
         />
+
+        <div className="button-section">
+          <SaveButton />
+          <CancelButton />
+        </div>
       </form>
     </section>
   );

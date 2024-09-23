@@ -1,3 +1,6 @@
+import SaveButton from "./SaveButton";
+import CancelButton from "./CancelButton";
+
 function FullNameInput({ className, inputId }) {
   return (
     <div className={className}>
@@ -41,6 +44,11 @@ function GeneralInfo() {
           className={inputClassName}
           inputId={phoneNumberInputId}
         />
+
+        <div className="button-section">
+          <SaveButton />
+          <CancelButton />
+        </div>
       </form>
     </section>
   );

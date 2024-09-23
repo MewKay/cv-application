@@ -1,5 +1,7 @@
 import { useState } from "react";
 import MonthSelector from "./MonthSelector";
+import SaveButton from "./SaveButton";
+import CancelButton from "./CancelButton";
 
 function CompanyNameInput({ className, inputId }) {
   return (
@@ -109,6 +111,10 @@ function Experience() {
         />
         <MainRespAdder className={inputClassName} />
       </form>
+      <div className="button-section">
+        <SaveButton />
+        <CancelButton />
+      </div>
     </section>
   );
 }
