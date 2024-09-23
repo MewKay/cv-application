@@ -1,3 +1,30 @@
+function FullNameInput({ className, inputId }) {
+  return (
+    <div className={className}>
+      <label htmlFor={inputId}>Full Name :</label>
+      <input id={inputId} type="text" required />
+    </div>
+  );
+}
+
+function EmailInput({ className, inputId }) {
+  return (
+    <div className={className}>
+      <label htmlFor={inputId}>Email :</label>
+      <input id={inputId} type="email" required />
+    </div>
+  );
+}
+
+function PhoneNumberInput({ className, inputId }) {
+  return (
+    <div className={className}>
+      <label htmlFor={inputId}>Phone Number :</label>
+      <input id={inputId} type="tel" />
+    </div>
+  );
+}
+
 function GeneralInfo() {
   const inputClassName = "general-info-input";
   const fullNameInputId = "full-name-input";
@@ -7,21 +34,12 @@ function GeneralInfo() {
   return (
     <section id="general-info-section">
       <h2>General Informations</h2>
-
-      <div className={inputClassName}>
-        <label htmlFor={fullNameInputId}>Full Name :</label>
-        <input id={fullNameInputId} type="text" required />
-      </div>
-
-      <div className={inputClassName}>
-        <label htmlFor={emailInputId}>Email :</label>
-        <input id={emailInputId} type="email" required />
-      </div>
-
-      <div className={inputClassName}>
-        <label htmlFor={phoneNumberInputId}>Phone Number :</label>
-        <input id={phoneNumberInputId} type="tel" />
-      </div>
+      <FullNameInput className={inputClassName} inputId={fullNameInputId} />
+      <EmailInput className={inputClassName} inputId={emailInputId} />
+      <PhoneNumberInput
+        className={inputClassName}
+        inputId={phoneNumberInputId}
+      />
     </section>
   );
 }
