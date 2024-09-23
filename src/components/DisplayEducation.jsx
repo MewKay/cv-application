@@ -1,4 +1,5 @@
 import resumeData from "../resumeData";
+import DeleteButton from "./DeleteButton";
 import EditButton from "./EditButton";
 
 function DisplayEducationItem({ educationItem }) {
@@ -10,6 +11,7 @@ function DisplayEducationItem({ educationItem }) {
       </div>
       <p className="display-study-title">{educationItem.studyTitle}</p>
       <EditButton />
+      <DeleteButton />
     </div>
   );
 }

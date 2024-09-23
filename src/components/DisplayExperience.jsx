@@ -1,4 +1,5 @@
 import resumeData from "../resumeData";
+import DeleteButton from "./DeleteButton";
 import EditButton from "./EditButton";
 
 function DisplayExperienceItem({ experienceItem }) {
@@ -15,6 +16,7 @@ function DisplayExperienceItem({ experienceItem }) {
         ))}
       </ul>
       <EditButton />
+      <DeleteButton />
     </div>
   );
 }

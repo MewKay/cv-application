@@ -1,5 +1,6 @@
 import resumeData from "../resumeData";
 import EditButton from "./EditButton";
+import DeleteButton from "./DeleteButton";
 
 function DisplayGeneralInfo() {
   const general = resumeData.generalInfo;
@@ -12,6 +13,7 @@ function DisplayGeneralInfo() {
         <p className="display-phone-number">{general.phoneNumber}</p>
       </div>
       <EditButton />
+      <DeleteButton />
     </div>
   );
 }
