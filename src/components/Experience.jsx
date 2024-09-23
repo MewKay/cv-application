@@ -20,8 +20,8 @@ function Experience() {
         <input type="text" required></input>
       </div>
 
-      <div>
-        <label>Work Duration :</label>
+      <fieldset>
+        <legend>Work Duration :</legend>
 
         <div id="work-start-select">
           <label>From :</label>
@@ -38,7 +38,7 @@ function Experience() {
             namePartId={workEndNamePartId}
           />
         </div>
-      </div>
+      </fieldset>
 
       <MainRespAdder />
     </section>
