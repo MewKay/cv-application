@@ -2,7 +2,7 @@ import resumeData from "../resumeData";
 import DeleteButton from "./DeleteButton";
 import EditButton from "./EditButton";
 
-function DisplayEducationItem({ educationItem }) {
+function DisplayEducationItem({ educationItem, onSetEditMode }) {
   return (
     <div className="education-item">
       <div className="school-end-date-section">
@@ -10,13 +10,13 @@ function DisplayEducationItem({ educationItem }) {
         <p className="display-end-date">{educationItem.endDate}</p>
       </div>
       <p className="display-study-title">{educationItem.studyTitle}</p>
-      <EditButton />
+      <EditButton handleClick={onSetEditMode} />
       <DeleteButton />
     </div>
   );
 }
 
-function DisplayEducation() {
+function DisplayEducation({ onSetEditMode }) {
   const educationList = resumeData.education;
 
   return (
@@ -28,6 +28,7 @@ function DisplayEducation() {
             <DisplayEducationItem
               educationItem={educationItem}
               key={crypto.randomUUID()}
+              onSetEditMode={onSetEditMode}
             />
           );
         })}

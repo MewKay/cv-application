@@ -1,34 +1,34 @@
 import SaveButton from "./SaveButton";
 import CancelButton from "./CancelButton";
 
-function FullNameInput({ className, inputId }) {
+function FullNameInput({ className, inputId, editMode }) {
   return (
     <div className={className}>
       <label htmlFor={inputId}>Full Name :</label>
-      <input id={inputId} type="text" required />
+      <input id={inputId} type="text" required disabled={!editMode} />
     </div>
   );
 }
 
-function EmailInput({ className, inputId }) {
+function EmailInput({ className, inputId, editMode }) {
   return (
     <div className={className}>
       <label htmlFor={inputId}>Email :</label>
-      <input id={inputId} type="email" required />
+      <input id={inputId} type="email" required disabled={!editMode} />
     </div>
   );
 }
 
-function PhoneNumberInput({ className, inputId }) {
+function PhoneNumberInput({ className, inputId, editMode }) {
   return (
     <div className={className}>
       <label htmlFor={inputId}>Phone Number :</label>
-      <input id={inputId} type="tel" />
+      <input id={inputId} type="tel" disabled={!editMode} />
     </div>
   );
 }
 
-function GeneralInfo() {
+function GeneralInfo({ editMode }) {
   const inputClassName = "general-info-input";
   const fullNameInputId = "full-name-input";
   const emailInputId = "email-input";
@@ -42,14 +42,26 @@ function GeneralInfo() {
         }}
       >
         <h2>General Informations</h2>
-        <FullNameInput className={inputClassName} inputId={fullNameInputId} />
-        <EmailInput className={inputClassName} inputId={emailInputId} />
+        <FullNameInput
+          className={inputClassName}
+          inputId={fullNameInputId}
+          editMode={editMode}
+        />
+        <EmailInput
+          className={inputClassName}
+          inputId={emailInputId}
+          editMode={editMode}
+        />
         <PhoneNumberInput
           className={inputClassName}
           inputId={phoneNumberInputId}
+          editMode={editMode}
         />
 
-        <div className="button-section">
+        <div
+          className="button-section"
+          style={{ display: editMode ? "block" : "none" }}
+        >
           <SaveButton />
           <CancelButton />
         </div>

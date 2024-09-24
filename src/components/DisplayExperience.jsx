@@ -2,7 +2,7 @@ import resumeData from "../resumeData";
 import DeleteButton from "./DeleteButton";
 import EditButton from "./EditButton";
 
-function DisplayExperienceItem({ experienceItem }) {
+function DisplayExperienceItem({ experienceItem, onSetEditMode }) {
   return (
     <div className="experience-item">
       <div className="company-name-duration-section">
@@ -15,13 +15,13 @@ function DisplayExperienceItem({ experienceItem }) {
           <li key={crypto.randomUUID()}>{mainRespItem}</li>
         ))}
       </ul>
-      <EditButton />
+      <EditButton handleClick={onSetEditMode} />
       <DeleteButton />
     </div>
   );
 }
 
-function DisplayExperience() {
+function DisplayExperience({ onSetEditMode }) {
   const experienceList = resumeData.experience;
 
   return (
@@ -31,6 +31,7 @@ function DisplayExperience() {
         {experienceList.map((experienceItem) => (
           <DisplayExperienceItem
             experienceItem={experienceItem}
+            onSetEditMode={onSetEditMode}
             key={crypto.randomUUID()}
           />
         ))}

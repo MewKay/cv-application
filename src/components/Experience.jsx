@@ -3,20 +3,20 @@ import MonthSelector from "./MonthSelector";
 import SaveButton from "./SaveButton";
 import CancelButton from "./CancelButton";
 
-function CompanyNameInput({ className, inputId }) {
+function CompanyNameInput({ className, inputId, editMode }) {
   return (
     <div className={className}>
       <label htmlFor={inputId}>Company Name :</label>
-      <input id={inputId} type="text" required></input>
+      <input id={inputId} type="text" required disabled={!editMode} />
     </div>
   );
 }
 
-function PositionTitleInput({ className, inputId }) {
+function PositionTitleInput({ className, inputId, editMode }) {
   return (
     <div className={className}>
       <label htmlFor={inputId}>Position Title :</label>
-      <input id={inputId} type="text" required></input>
+      <input id={inputId} type="text" required disabled={!editMode} />
     </div>
   );
 }
@@ -26,9 +26,10 @@ function WorkDurationInput({
   workDurationSelectClass,
   workStartNamePartId,
   workEndNamePartId,
+  editMode,
 }) {
   return (
-    <fieldset className={className}>
+    <fieldset className={className} disabled={!editMode}>
       <legend>Work Duration :</legend>
 
       <div id="work-start-select">
@@ -58,7 +59,7 @@ function TextInputItem() {
   );
 }
 
-function MainRespAdder({ className }) {
+function MainRespAdder({ className, editMode }) {
   const [listTextInput, setListTextInput] = useState([
     <TextInputItem key={crypto.randomUUID()} />,
   ]);
@@ -71,7 +72,7 @@ function MainRespAdder({ className }) {
   }
 
   return (
-    <fieldset className={className}>
+    <fieldset className={className} disabled={!editMode}>
       <legend>Main Responsibilities :</legend>
       <ul>
         {listTextInput}
@@ -83,7 +84,7 @@ function MainRespAdder({ className }) {
   );
 }
 
-function Experience() {
+function Experience({ editMode }) {
   const inputClassName = "experience-input";
   const companyNameInputId = "company-name-input";
   const positionTitleInputId = "position-title-input";
@@ -102,19 +103,25 @@ function Experience() {
         <CompanyNameInput
           className={inputClassName}
           inputId={companyNameInputId}
+          editMode={editMode}
         />
         <PositionTitleInput
           className={inputClassName}
           inputId={positionTitleInputId}
+          editMode={editMode}
         />
         <WorkDurationInput
           className={inputClassName}
           workDurationSelectClass={workDurationSelectClass}
           workStartNamePartId={workStartNamePartId}
           workEndNamePartId={workEndNamePartId}
+          editMode={editMode}
         />
-        <MainRespAdder className={inputClassName} />
-        <div className="button-section">
+        <MainRespAdder className={inputClassName} editMode={editMode} />
+        <div
+          className="button-section"
+          style={{ display: editMode ? "block" : "none" }}
+        >
           <SaveButton />
           <CancelButton />
         </div>

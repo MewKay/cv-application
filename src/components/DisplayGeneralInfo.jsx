@@ -2,7 +2,7 @@ import resumeData from "../resumeData";
 import EditButton from "./EditButton";
 import DeleteButton from "./DeleteButton";
 
-function DisplayGeneralInfo() {
+function DisplayGeneralInfo({ onSetEditMode }) {
   const general = resumeData.generalInfo;
 
   return (
@@ -12,7 +12,7 @@ function DisplayGeneralInfo() {
         <p className="display-email">{general.email}</p>
         <p className="display-phone-number">{general.phoneNumber}</p>
       </div>
-      <EditButton />
+      <EditButton handleClick={onSetEditMode} />
       <DeleteButton />
     </div>
   );
