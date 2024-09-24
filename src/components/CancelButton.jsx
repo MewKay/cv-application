@@ -5,6 +5,7 @@ function CancelButton({ handleClick }) {
     <Button
       className={"cancel-button"}
       buttonText={"Cancel"}
+      type="reset"
       handleClick={handleClick}
     />
   );

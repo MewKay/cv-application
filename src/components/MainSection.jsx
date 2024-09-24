@@ -21,9 +21,26 @@ function MainSection() {
     setDataEditMode({ ...dataEditMode, experience: true });
   }
 
+  function handleGeneralInfoEditModeReset() {
+    setDataEditMode({ ...dataEditMode, generalInfo: false });
+  }
+
+  function handleEducationEditModeReset() {
+    setDataEditMode({ ...dataEditMode, education: false });
+  }
+
+  function handleExperienceEditModeReset() {
+    setDataEditMode({ ...dataEditMode, experience: true });
+  }
+
   return (
     <main>
-      <EditSection dataEditMode={dataEditMode} />
+      <EditSection
+        dataEditMode={dataEditMode}
+        onGeneralInfoEditModeReset={handleGeneralInfoEditModeReset}
+        onEducationEditModeReset={handleEducationEditModeReset}
+        onExperienceEditModeReset={handleExperienceEditModeReset}
+      />
       <DisplaySection
         onGeneralInfoSetEditMode={handleGeneralInfoSetEditMode}
         onEducationSetEditMode={handleEducationSetEditMode}

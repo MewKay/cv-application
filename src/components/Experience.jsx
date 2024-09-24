@@ -84,7 +84,7 @@ function MainRespAdder({ className, editMode }) {
   );
 }
 
-function Experience({ editMode }) {
+function Experience({ editMode, onEditModeReset }) {
   const inputClassName = "experience-input";
   const companyNameInputId = "company-name-input";
   const positionTitleInputId = "position-title-input";
@@ -123,7 +123,7 @@ function Experience({ editMode }) {
           style={{ display: editMode ? "block" : "none" }}
         >
           <SaveButton />
-          <CancelButton />
+          <CancelButton handleClick={onEditModeReset} />
         </div>
       </form>
     </section>

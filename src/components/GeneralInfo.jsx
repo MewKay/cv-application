@@ -28,7 +28,7 @@ function PhoneNumberInput({ className, inputId, editMode }) {
   );
 }
 
-function GeneralInfo({ editMode }) {
+function GeneralInfo({ editMode, onEditModeReset }) {
   const inputClassName = "general-info-input";
   const fullNameInputId = "full-name-input";
   const emailInputId = "email-input";
@@ -63,7 +63,7 @@ function GeneralInfo({ editMode }) {
           style={{ display: editMode ? "block" : "none" }}
         >
           <SaveButton />
-          <CancelButton />
+          <CancelButton handleClick={onEditModeReset} />
         </div>
       </form>
     </section>

@@ -29,7 +29,7 @@ function EducationEndDateInput({ className, inputId, namePartId, editMode }) {
   );
 }
 
-function Education({ editMode }) {
+function Education({ editMode, onEditModeReset }) {
   const inputClassName = "education-input";
   const schoolNameInputId = "school-name-input";
   const studyTitleInputId = "study-title-input";
@@ -66,7 +66,7 @@ function Education({ editMode }) {
           style={{ display: editMode ? "block" : "none" }}
         >
           <SaveButton />
-          <CancelButton />
+          <CancelButton handleClick={onEditModeReset} />
         </div>
       </form>
     </section>

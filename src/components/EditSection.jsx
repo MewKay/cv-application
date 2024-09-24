@@ -2,12 +2,26 @@ import Education from "./Education";
 import Experience from "./Experience";
 import GeneralInfo from "./GeneralInfo";
 
-function EditSection({ dataEditMode }) {
+function EditSection({
+  dataEditMode,
+  onGeneralInfoEditModeReset,
+  onEducationEditModeReset,
+  onExperienceEditModeReset,
+}) {
   return (
     <div className="edit-section">
-      <GeneralInfo editMode={dataEditMode.generalInfo} />
-      <Education editMode={dataEditMode.education} />
-      <Experience editMode={dataEditMode.experience} />
+      <GeneralInfo
+        editMode={dataEditMode.generalInfo}
+        onEditModeReset={onGeneralInfoEditModeReset}
+      />
+      <Education
+        editMode={dataEditMode.education}
+        onEditModeReset={onEducationEditModeReset}
+      />
+      <Experience
+        editMode={dataEditMode.experience}
+        onEditModeReset={onExperienceEditModeReset}
+      />
     </div>
   );
 }
