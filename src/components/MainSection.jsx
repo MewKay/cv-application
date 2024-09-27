@@ -35,11 +35,19 @@ function MainSection() {
     setDataEditMode({ ...dataEditMode, experience: true });
   }
 
+  function handleGeneralInfoSave(editedGeneralInfo) {
+    setCurrentResumeData({
+      ...currentResumeData,
+      generalInfo: editedGeneralInfo,
+    });
+  }
+
   return (
     <main>
       <EditSection
         dataEditMode={dataEditMode}
         currentResumeData={currentResumeData}
+        onGeneralInfoSave={handleGeneralInfoSave}
         onGeneralInfoEditModeReset={handleGeneralInfoEditModeReset}
         onEducationEditModeReset={handleEducationEditModeReset}
         onExperienceEditModeReset={handleExperienceEditModeReset}

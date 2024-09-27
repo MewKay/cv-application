@@ -67,7 +67,12 @@ function PhoneNumberInput({
   );
 }
 
-function GeneralInfo({ editMode, currentGeneralInfoData, onEditModeReset }) {
+function GeneralInfo({
+  editMode,
+  currentGeneralInfoData,
+  onEditModeReset,
+  onDataSave,
+}) {
   const [toBeEditedGeneralInfo, setToBeEditedGeneralInfo] = useState(
     currentGeneralInfoData
   );
@@ -107,6 +112,11 @@ function GeneralInfo({ editMode, currentGeneralInfoData, onEditModeReset }) {
     onEditModeReset();
   }
 
+  function handleSave() {
+    onDataSave(toBeEditedGeneralInfo);
+    onEditModeReset();
+  }
+
   return (
     <section id="general-info-section">
       <form
@@ -141,7 +151,7 @@ function GeneralInfo({ editMode, currentGeneralInfoData, onEditModeReset }) {
           className="button-section"
           style={{ display: editMode ? "block" : "none" }}
         >
-          <SaveButton />
+          <SaveButton handleClick={handleSave} />
           <CancelButton handleClick={handleGeneralInfoReset} />
         </div>
       </form>
