@@ -4,6 +4,7 @@ import GeneralInfo from "./GeneralInfo";
 
 function EditSection({
   dataEditMode,
+  currentResumeData,
   onGeneralInfoEditModeReset,
   onEducationEditModeReset,
   onExperienceEditModeReset,
@@ -11,6 +12,7 @@ function EditSection({
   return (
     <div className="edit-section">
       <GeneralInfo
+        currentGeneralInfoData={currentResumeData.generalInfo}
         editMode={dataEditMode.generalInfo}
         onEditModeReset={onGeneralInfoEditModeReset}
       />

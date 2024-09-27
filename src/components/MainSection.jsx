@@ -1,8 +1,10 @@
 import EditSection from "./EditSection";
 import DisplaySection from "./DisplaySection";
 import { useState } from "react";
+import resumeData from "../resumeData";
 
 function MainSection() {
+  const [currentResumeData, setCurrentResumeData] = useState(resumeData);
   const [dataEditMode, setDataEditMode] = useState({
     generalInfo: false,
     education: false,
@@ -37,6 +39,7 @@ function MainSection() {
     <main>
       <EditSection
         dataEditMode={dataEditMode}
+        currentResumeData={currentResumeData}
         onGeneralInfoEditModeReset={handleGeneralInfoEditModeReset}
         onEducationEditModeReset={handleEducationEditModeReset}
         onExperienceEditModeReset={handleExperienceEditModeReset}
