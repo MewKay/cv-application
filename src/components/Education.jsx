@@ -77,6 +77,7 @@ function Education({
   onEditModeReset,
   currentEducationData,
   itemIndexToEdit,
+  onDataSave,
 }) {
   const [toBeEditedEducation, setToBeEditedEducation] = useState({
     index: itemIndexToEdit,
@@ -106,6 +107,7 @@ function Education({
   function handleSchoolNameChange(e) {
     const { index, data } = toBeEditedEducation;
     data.schoolName = e.target.value;
+
     setToBeEditedEducation({
       index,
       data,
@@ -114,7 +116,7 @@ function Education({
 
   function handleStudyTitleChange(e) {
     const { index, data } = toBeEditedEducation;
-    data.schoolName = e.target.value;
+    data.studyTitle = e.target.value;
 
     setToBeEditedEducation({
       index,
@@ -147,6 +149,11 @@ function Education({
       index: itemIndexToEdit,
       data: currentEducationData[itemIndexToEdit],
     });
+    onEditModeReset();
+  }
+
+  function handleSave() {
+    onDataSave(toBeEditedEducation);
     onEditModeReset();
   }
 
@@ -187,7 +194,7 @@ function Education({
           className="button-section"
           style={{ display: editMode ? "block" : "none" }}
         >
-          <SaveButton />
+          <SaveButton handleClick={handleSave} />
           <CancelButton handleClick={handleEducationReset} />
         </div>
       </form>

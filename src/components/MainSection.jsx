@@ -47,6 +47,17 @@ function MainSection() {
     });
   }
 
+  function handleEducationSave(editedEducationItem) {
+    const { index, data } = editedEducationItem;
+    const editedEducationList = [...currentResumeData.education];
+    editedEducationList[index] = data;
+
+    setCurrentResumeData({
+      ...currentResumeData,
+      education: editedEducationList,
+    });
+  }
+
   return (
     <main>
       <EditSection
@@ -57,6 +68,7 @@ function MainSection() {
         onGeneralInfoSave={handleGeneralInfoSave}
         onEducationEditModeReset={handleEducationEditModeReset}
         onExperienceEditModeReset={handleExperienceEditModeReset}
+        onEducationSave={handleEducationSave}
       />
       <DisplaySection
         dataEditMode={dataEditMode}

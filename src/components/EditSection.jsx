@@ -10,6 +10,7 @@ function EditSection({
   onEducationEditModeReset,
   onExperienceEditModeReset,
   onGeneralInfoSave,
+  onEducationSave,
 }) {
   return (
     <div className="edit-section">
@@ -24,6 +25,7 @@ function EditSection({
         editMode={dataEditMode.education}
         itemIndexToEdit={educationItemIndexToEdit}
         onEditModeReset={onEducationEditModeReset}
+        onDataSave={onEducationSave}
       />
       <Experience
         editMode={dataEditMode.experience}
