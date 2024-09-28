@@ -3,14 +3,20 @@ import DisplayExperience from "./DisplayExperience";
 import DisplayGeneralInfo from "./DisplayGeneralInfo";
 
 function DisplaySection({
+  dataEditMode,
   onGeneralInfoSetEditMode,
   onEducationSetEditMode,
   onExperienceSetEditMode,
+  onChangeEducationItemToEdit,
 }) {
   return (
     <div className="display-section">
       <DisplayGeneralInfo onSetEditMode={onGeneralInfoSetEditMode} />
-      <DisplayEducation onSetEditMode={onEducationSetEditMode} />
+      <DisplayEducation
+        editMode={dataEditMode.education}
+        onSetEditMode={onEducationSetEditMode}
+        onChangeItemToEdit={onChangeEducationItemToEdit}
+      />
       <DisplayExperience onSetEditMode={onExperienceSetEditMode} />
     </div>
   );

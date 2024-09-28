@@ -6,7 +6,7 @@ const resumeData = {
   },
   education: [
     {
-      schoolName: "Mediun College",
+      schoolName: "Medium College",
       studyTitle: "Bachelors of Science in Computer Science",
       endDate: "August 2020",
     },

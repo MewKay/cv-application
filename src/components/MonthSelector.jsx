@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const months = [
   "January",
   "February",
@@ -23,7 +25,13 @@ const years = (() => {
   return centuryList;
 })();
 
-function MonthSelector({ namePartId }) {
+function MonthSelector({
+  namePartId,
+  monthValue,
+  yearValue,
+  onMonthChange,
+  onYearChange,
+}) {
   const monthInputId = `${namePartId}-month-input`;
   const yearInputId = `${namePartId}-year-input`;
 
@@ -34,7 +42,8 @@ function MonthSelector({ namePartId }) {
         <select
           id={monthInputId}
           name="completionMonth"
-          defaultValue={months[0]}
+          value={monthValue}
+          onChange={onMonthChange}
         >
           {months.map((month) => {
             return (
@@ -48,7 +57,12 @@ function MonthSelector({ namePartId }) {
 
       <span>
         <label htmlFor={yearInputId}>Year :</label>
-        <select id={yearInputId} name="completionYear" defaultValue={years[0]}>
+        <select
+          id={yearInputId}
+          name="completionYear"
+          value={yearValue}
+          onChange={onYearChange}
+        >
           {years.map((year) => {
             return (
               <option value={year} key={crypto.randomUUID()}>

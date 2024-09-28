@@ -5,6 +5,7 @@ import GeneralInfo from "./GeneralInfo";
 function EditSection({
   dataEditMode,
   currentResumeData,
+  educationItemIndexToEdit,
   onGeneralInfoEditModeReset,
   onEducationEditModeReset,
   onExperienceEditModeReset,
@@ -19,7 +20,9 @@ function EditSection({
         onDataSave={onGeneralInfoSave}
       />
       <Education
+        currentEducationData={currentResumeData.education}
         editMode={dataEditMode.education}
+        itemIndexToEdit={educationItemIndexToEdit}
         onEditModeReset={onEducationEditModeReset}
       />
       <Experience

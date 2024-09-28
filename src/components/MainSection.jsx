@@ -10,6 +10,7 @@ function MainSection() {
     education: false,
     experience: false,
   });
+  const [educationItemIndexToEdit, setEducationItemIndexToEdit] = useState(0);
 
   function handleGeneralInfoSetEditMode() {
     setDataEditMode({ ...dataEditMode, generalInfo: true });
@@ -35,6 +36,10 @@ function MainSection() {
     setDataEditMode({ ...dataEditMode, experience: true });
   }
 
+  function handleChangeEducationItemToEdit(index) {
+    setEducationItemIndexToEdit(index);
+  }
+
   function handleGeneralInfoSave(editedGeneralInfo) {
     setCurrentResumeData({
       ...currentResumeData,
@@ -46,16 +51,19 @@ function MainSection() {
     <main>
       <EditSection
         dataEditMode={dataEditMode}
+        educationItemIndexToEdit={educationItemIndexToEdit}
         currentResumeData={currentResumeData}
-        onGeneralInfoSave={handleGeneralInfoSave}
         onGeneralInfoEditModeReset={handleGeneralInfoEditModeReset}
+        onGeneralInfoSave={handleGeneralInfoSave}
         onEducationEditModeReset={handleEducationEditModeReset}
         onExperienceEditModeReset={handleExperienceEditModeReset}
       />
       <DisplaySection
+        dataEditMode={dataEditMode}
         onGeneralInfoSetEditMode={handleGeneralInfoSetEditMode}
         onEducationSetEditMode={handleEducationSetEditMode}
         onExperienceSetEditMode={handleExperienceSetEditMode}
+        onChangeEducationItemToEdit={handleChangeEducationItemToEdit}
       />
     </main>
   );
