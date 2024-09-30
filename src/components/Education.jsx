@@ -63,8 +63,8 @@ function EducationEndDateInput({
       <MonthSelector
         id={inputId}
         namePartId={namePartId}
-        monthValue={monthEndDateData}
-        yearValue={yearEndDateData}
+        monthValue={editMode && monthEndDateData}
+        yearValue={editMode && yearEndDateData}
         onMonthChange={onMonthChange}
         onYearChange={onYearChange}
       />

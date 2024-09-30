@@ -11,6 +11,7 @@ function MainSection() {
     experience: false,
   });
   const [educationItemIndexToEdit, setEducationItemIndexToEdit] = useState(0);
+  const [experienceItemIndexToEdit, setExperienceItemIndexToEdit] = useState(0);
 
   function handleGeneralInfoSetEditMode() {
     setDataEditMode({ ...dataEditMode, generalInfo: true });
@@ -33,11 +34,15 @@ function MainSection() {
   }
 
   function handleExperienceEditModeReset() {
-    setDataEditMode({ ...dataEditMode, experience: true });
+    setDataEditMode({ ...dataEditMode, experience: false });
   }
 
   function handleChangeEducationItemToEdit(index) {
     setEducationItemIndexToEdit(index);
+  }
+
+  function handleChangeExperienceItemToEdit(index) {
+    setExperienceItemIndexToEdit(index);
   }
 
   function handleGeneralInfoSave(editedGeneralInfo) {
@@ -62,8 +67,9 @@ function MainSection() {
     <main>
       <EditSection
         dataEditMode={dataEditMode}
-        educationItemIndexToEdit={educationItemIndexToEdit}
         currentResumeData={currentResumeData}
+        educationItemIndexToEdit={educationItemIndexToEdit}
+        experienceItemIndexToEdit={experienceItemIndexToEdit}
         onGeneralInfoEditModeReset={handleGeneralInfoEditModeReset}
         onGeneralInfoSave={handleGeneralInfoSave}
         onEducationEditModeReset={handleEducationEditModeReset}
@@ -76,6 +82,7 @@ function MainSection() {
         onEducationSetEditMode={handleEducationSetEditMode}
         onExperienceSetEditMode={handleExperienceSetEditMode}
         onChangeEducationItemToEdit={handleChangeEducationItemToEdit}
+        onChangeExperienceItemToEdit={handleChangeExperienceItemToEdit}
       />
     </main>
   );

@@ -2,7 +2,22 @@ import resumeData from "../resumeData";
 import DeleteButton from "./DeleteButton";
 import EditButton from "./EditButton";
 
-function DisplayExperienceItem({ experienceItem, onSetEditMode }) {
+function DisplayExperienceItem({
+  editMode,
+  experienceItemIndex,
+  experienceItem,
+  onSetEditMode,
+  onChangeItemToEdit,
+}) {
+  function handleGetItemToEdit() {
+    if (editMode) {
+      return;
+    }
+
+    onChangeItemToEdit(experienceItemIndex);
+    onSetEditMode();
+  }
+
   return (
     <div className="experience-item">
       <div className="company-name-duration-section">
@@ -12,26 +27,31 @@ function DisplayExperienceItem({ experienceItem, onSetEditMode }) {
       <p className="display-position-title">{experienceItem.positionTitle}</p>
       <ul className="main-resp-list-container">
         {experienceItem.mainResp.map((mainRespItem) => (
-          <li key={crypto.randomUUID()}>{mainRespItem}</li>
+          <li key={mainRespItem.bulletPointKey}>
+            {mainRespItem.bulletPointData}
+          </li>
         ))}
       </ul>
-      <EditButton handleClick={onSetEditMode} />
+      <EditButton handleClick={handleGetItemToEdit} />
       <DeleteButton />
     </div>
   );
 }
 
-function DisplayExperience({ onSetEditMode }) {
+function DisplayExperience({ editMode, onSetEditMode, onChangeItemToEdit }) {
   const experienceList = resumeData.experience;
 
   return (
     <div id="display-experience">
       <h3>Experience</h3>
       <div className="display-education-list">
-        {experienceList.map((experienceItem) => (
+        {experienceList.map((experienceItem, index) => (
           <DisplayExperienceItem
+            editMode={editMode}
+            experienceItemIndex={index}
             experienceItem={experienceItem}
             onSetEditMode={onSetEditMode}
+            onChangeItemToEdit={onChangeItemToEdit}
             key={crypto.randomUUID()}
           />
         ))}

@@ -6,6 +6,7 @@ function EditSection({
   dataEditMode,
   currentResumeData,
   educationItemIndexToEdit,
+  experienceItemIndexToEdit,
   onGeneralInfoEditModeReset,
   onEducationEditModeReset,
   onExperienceEditModeReset,
@@ -28,7 +29,9 @@ function EditSection({
         onDataSave={onEducationSave}
       />
       <Experience
+        currentExperienceData={currentResumeData.experience}
         editMode={dataEditMode.experience}
+        itemIndexToEdit={experienceItemIndexToEdit}
         onEditModeReset={onExperienceEditModeReset}
       />
     </div>

@@ -3,20 +3,46 @@ import MonthSelector from "./MonthSelector";
 import SaveButton from "./SaveButton";
 import CancelButton from "./CancelButton";
 
-function CompanyNameInput({ className, inputId, editMode }) {
+function CompanyNameInput({
+  className,
+  inputId,
+  editMode,
+  companyNameData,
+  handleCompanyNameChange,
+}) {
   return (
     <div className={className}>
       <label htmlFor={inputId}>Company Name :</label>
-      <input id={inputId} type="text" required disabled={!editMode} />
+      <input
+        id={inputId}
+        type="text"
+        value={editMode ? companyNameData : ""}
+        onChange={handleCompanyNameChange}
+        required
+        disabled={!editMode}
+      />
     </div>
   );
 }
 
-function PositionTitleInput({ className, inputId, editMode }) {
+function PositionTitleInput({
+  className,
+  inputId,
+  editMode,
+  positionTitleData,
+  handlePositionTitleChange,
+}) {
   return (
     <div className={className}>
       <label htmlFor={inputId}>Position Title :</label>
-      <input id={inputId} type="text" required disabled={!editMode} />
+      <input
+        id={inputId}
+        type="text"
+        value={editMode ? positionTitleData : ""}
+        onChange={handlePositionTitleChange}
+        required
+        disabled={!editMode}
+      />
     </div>
   );
 }
@@ -27,6 +53,14 @@ function WorkDurationInput({
   workStartNamePartId,
   workEndNamePartId,
   editMode,
+  monthWorkStartData,
+  yearWorkStartData,
+  monthWorkEndData,
+  yearWorkEndData,
+  onMonthWorkStartChange,
+  onYearWorkStartChange,
+  onMonthWorkEndChange,
+  onYearWorkEndChange,
 }) {
   return (
     <fieldset className={className} disabled={!editMode}>
@@ -37,6 +71,10 @@ function WorkDurationInput({
         <MonthSelector
           className={workDurationSelectClass}
           namePartId={workStartNamePartId}
+          monthValue={editMode && monthWorkStartData}
+          yearValue={editMode && yearWorkStartData}
+          onMonthChange={onMonthWorkStartChange}
+          onYearChange={onYearWorkStartChange}
         />
       </div>
 
@@ -45,52 +83,219 @@ function WorkDurationInput({
         <MonthSelector
           className={workDurationSelectClass}
           namePartId={workEndNamePartId}
+          monthValue={editMode && monthWorkEndData}
+          yearValue={editMode && yearWorkEndData}
+          onMonthChange={onMonthWorkEndChange}
+          onYearChange={onYearWorkEndChange}
         />
       </div>
     </fieldset>
   );
 }
 
-function TextInputItem() {
+function TextInputItem({
+  mainRespData,
+  onBulletPointChange,
+  onDeletionBulletPoint,
+}) {
   return (
     <li>
-      <input type="text"></input>
+      <input
+        type="text"
+        value={mainRespData.bulletPointData}
+        onChange={onBulletPointChange}
+      ></input>
+      <button
+        className={"bullet-point-delete-button"}
+        onClick={() => onDeletionBulletPoint(mainRespData.bulletPointKey)}
+      >
+        X
+      </button>
     </li>
   );
 }
 
-function MainRespAdder({ className, editMode }) {
-  const [listTextInput, setListTextInput] = useState([
-    <TextInputItem key={crypto.randomUUID()} />,
-  ]);
-
-  function handleButtonClick() {
-    setListTextInput([
-      ...listTextInput,
-      <TextInputItem key={crypto.randomUUID()} />,
-    ]);
-  }
-
+function MainRespAdder({
+  className,
+  editMode,
+  mainRespDataList,
+  onBulletPointChange,
+  onAdditionBulletPoint,
+  onDeletionBulletPoint,
+}) {
   return (
     <fieldset className={className} disabled={!editMode}>
       <legend>Main Responsibilities :</legend>
       <ul>
-        {listTextInput}
+        {editMode &&
+          mainRespDataList.map((mainRespData, index) => {
+            return (
+              <TextInputItem
+                key={mainRespData.bulletPointKey}
+                mainRespData={mainRespData}
+                onBulletPointChange={(e) => onBulletPointChange(e, index)}
+                onDeletionBulletPoint={onDeletionBulletPoint}
+              />
+            );
+          })}
         <li>
-          <button onClick={handleButtonClick}>Add more</button>
+          <button onClick={onAdditionBulletPoint}>Add more</button>
         </li>
       </ul>
     </fieldset>
   );
 }
 
-function Experience({ editMode, onEditModeReset }) {
+function Experience({
+  editMode,
+  onEditModeReset,
+  currentExperienceData,
+  itemIndexToEdit,
+}) {
+  const [toBeEditedExperience, setToBeEditedExperience] = useState({
+    index: itemIndexToEdit,
+    data: { ...currentExperienceData[itemIndexToEdit] },
+  });
+
+  if (itemIndexToEdit !== toBeEditedExperience.index) {
+    setToBeEditedExperience({
+      index: itemIndexToEdit,
+      data: { ...currentExperienceData[itemIndexToEdit] },
+    });
+  }
+
   const inputClassName = "experience-input";
   const companyNameInputId = "company-name-input";
   const positionTitleInputId = "position-title-input";
   const workDurationSelectClass = "work-duration-select-class";
   const workStartNamePartId = "work-start";
   const workEndNamePartId = "work-end";
+
+  const { data } = toBeEditedExperience;
+  const companyNameData = data.companyName;
+  const positionTitleData = data.positionTitle;
+
+  const workStartDateData = data.workStart.split(" ");
+  const monthWorkStartData = workStartDateData[0];
+  const yearWorkStartData = workStartDateData[1];
+
+  const workEndDateData = data.workEnd.split(" ");
+  const monthWorkEndData = workEndDateData[0];
+  const yearWorkEndData = workEndDateData[1];
+
+  const mainRespDataList = data.mainResp;
+
+  function handleCompanyNameChange(e) {
+    const { index, data } = toBeEditedExperience;
+    data.companyName = e.target.value;
+
+    setToBeEditedExperience({
+      index,
+      data,
+    });
+  }
+
+  function handlePositionTitleChange(e) {
+    const { index, data } = toBeEditedExperience;
+    data.positionTitle = e.target.value;
+
+    setToBeEditedExperience({
+      index,
+      data,
+    });
+  }
+
+  function handleWorkStartMonthChange(e) {
+    const { index, data } = toBeEditedExperience;
+    data.workStart = `${e.target.value} ${yearWorkStartData}`;
+
+    setToBeEditedExperience({
+      index,
+      data,
+    });
+  }
+
+  function handleWorkStartYearChange(e) {
+    const { index, data } = toBeEditedExperience;
+    data.workStart = `${monthWorkStartData} ${e.target.value}`;
+
+    setToBeEditedExperience({
+      index,
+      data,
+    });
+  }
+
+  function handleWorkEndMonthChange(e) {
+    const { index, data } = toBeEditedExperience;
+    data.workEnd = `${e.target.value} ${yearWorkEndData}`;
+
+    setToBeEditedExperience({
+      index,
+      data,
+    });
+  }
+
+  function handleWorkEndYearChange(e) {
+    const { index, data } = toBeEditedExperience;
+    data.workEnd = `${monthWorkEndData} ${e.target.value}`;
+
+    setToBeEditedExperience({
+      index,
+      data,
+    });
+  }
+
+  function handleBulletPointChange(e, bulletPointIndex) {
+    const { index, data } = toBeEditedExperience;
+    const modifiedMainResp = data.mainResp.map((mainRespData) => {
+      return { ...mainRespData };
+    });
+    modifiedMainResp[bulletPointIndex]["bulletPointData"] = e.target.value;
+    data.mainResp = modifiedMainResp;
+
+    setToBeEditedExperience({
+      index,
+      data,
+    });
+  }
+
+  function handleAdditionBulletPoint() {
+    const { index, data } = toBeEditedExperience;
+    const modifiedMainResp = [
+      ...data.mainResp,
+      {
+        bulletPointKey: crypto.randomUUID(),
+        bulletPointData: "",
+      },
+    ];
+    data.mainResp = modifiedMainResp;
+
+    setToBeEditedExperience({
+      index,
+      data,
+    });
+  }
+
+  function handleDeletionBulletPoint(bulletPointKeyToDelete) {
+    const { index, data } = toBeEditedExperience;
+    const modifiedMainResp = data.mainResp.filter(
+      (mainRespData) => mainRespData.bulletPointKey !== bulletPointKeyToDelete
+    );
+    data.mainResp = modifiedMainResp;
+
+    setToBeEditedExperience({
+      index,
+      data,
+    });
+  }
+
+  function handleExperienceReset() {
+    setToBeEditedExperience({
+      index: itemIndexToEdit,
+      data: { ...currentExperienceData[itemIndexToEdit] },
+    });
+    onEditModeReset();
+  }
 
   return (
     <section>
@@ -104,11 +309,15 @@ function Experience({ editMode, onEditModeReset }) {
           className={inputClassName}
           inputId={companyNameInputId}
           editMode={editMode}
+          companyNameData={companyNameData}
+          handleCompanyNameChange={handleCompanyNameChange}
         />
         <PositionTitleInput
           className={inputClassName}
           inputId={positionTitleInputId}
           editMode={editMode}
+          positionTitleData={positionTitleData}
+          handlePositionTitleChange={handlePositionTitleChange}
         />
         <WorkDurationInput
           className={inputClassName}
@@ -116,14 +325,29 @@ function Experience({ editMode, onEditModeReset }) {
           workStartNamePartId={workStartNamePartId}
           workEndNamePartId={workEndNamePartId}
           editMode={editMode}
+          monthWorkStartData={monthWorkStartData}
+          yearWorkStartData={yearWorkStartData}
+          monthWorkEndData={monthWorkEndData}
+          yearWorkEndData={yearWorkEndData}
+          onMonthWorkStartChange={handleWorkStartMonthChange}
+          onYearWorkStartChange={handleWorkStartYearChange}
+          onMonthWorkEndChange={handleWorkEndMonthChange}
+          onYearWorkEndChange={handleWorkEndYearChange}
         />
-        <MainRespAdder className={inputClassName} editMode={editMode} />
+        <MainRespAdder
+          className={inputClassName}
+          editMode={editMode}
+          mainRespDataList={mainRespDataList}
+          onBulletPointChange={handleBulletPointChange}
+          onAdditionBulletPoint={handleAdditionBulletPoint}
+          onDeletionBulletPoint={handleDeletionBulletPoint}
+        />
         <div
           className="button-section"
           style={{ display: editMode ? "block" : "none" }}
         >
           <SaveButton />
-          <CancelButton handleClick={onEditModeReset} />
+          <CancelButton handleClick={handleExperienceReset} />
         </div>
       </form>
     </section>

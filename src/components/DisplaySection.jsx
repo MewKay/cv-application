@@ -8,6 +8,7 @@ function DisplaySection({
   onEducationSetEditMode,
   onExperienceSetEditMode,
   onChangeEducationItemToEdit,
+  onChangeExperienceItemToEdit,
 }) {
   return (
     <div className="display-section">
@@ -17,7 +18,11 @@ function DisplaySection({
         onSetEditMode={onEducationSetEditMode}
         onChangeItemToEdit={onChangeEducationItemToEdit}
       />
-      <DisplayExperience onSetEditMode={onExperienceSetEditMode} />
+      <DisplayExperience
+        editMode={dataEditMode.experience}
+        onSetEditMode={onExperienceSetEditMode}
+        onChangeItemToEdit={onChangeExperienceItemToEdit}
+      />
     </div>
   );
 }
