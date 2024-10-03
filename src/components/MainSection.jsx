@@ -63,6 +63,17 @@ function MainSection() {
     });
   }
 
+  function handleExperienceSave(editedExperienceItem) {
+    const { index, data } = editedExperienceItem;
+    const editedExperienceList = [...currentResumeData.experience];
+    editedExperienceList[index] = { ...data, mainResp: [...data.mainResp] };
+
+    setCurrentResumeData({
+      ...currentResumeData,
+      experience: editedExperienceList,
+    });
+  }
+
   return (
     <main>
       <EditSection
@@ -75,6 +86,7 @@ function MainSection() {
         onEducationEditModeReset={handleEducationEditModeReset}
         onExperienceEditModeReset={handleExperienceEditModeReset}
         onEducationSave={handleEducationSave}
+        onExperienceSave={handleExperienceSave}
       />
       <DisplaySection
         dataEditMode={dataEditMode}

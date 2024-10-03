@@ -5,6 +5,7 @@ function SaveButton({ handleClick }) {
     <Button
       className={"save-button"}
       buttonText={"Save"}
+      type={"submit"}
       handleClick={handleClick}
     />
   );

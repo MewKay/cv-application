@@ -151,6 +151,7 @@ function Experience({
   onEditModeReset,
   currentExperienceData,
   itemIndexToEdit,
+  onDataSave,
 }) {
   const [toBeEditedExperience, setToBeEditedExperience] = useState({
     index: itemIndexToEdit,
@@ -297,6 +298,11 @@ function Experience({
     onEditModeReset();
   }
 
+  function handleSave() {
+    onDataSave(toBeEditedExperience);
+    onEditModeReset();
+  }
+
   return (
     <section>
       <form
@@ -346,7 +352,7 @@ function Experience({
           className="button-section"
           style={{ display: editMode ? "block" : "none" }}
         >
-          <SaveButton />
+          <SaveButton handleClick={handleSave} />
           <CancelButton handleClick={handleExperienceReset} />
         </div>
       </form>
