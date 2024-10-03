@@ -152,18 +152,15 @@ function Education({
     onEditModeReset();
   }
 
-  function handleSave() {
+  function handleSave(e) {
+    e.preventDefault();
     onDataSave(toBeEditedEducation);
     onEditModeReset();
   }
 
   return (
     <section id="education-section">
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-        }}
-      >
+      <form onSubmit={handleSave}>
         <h2>Add Education</h2>
         <SchoolNameInput
           className={inputClassName}
@@ -194,7 +191,7 @@ function Education({
           className="button-section"
           style={{ display: editMode ? "block" : "none" }}
         >
-          <SaveButton handleClick={handleSave} />
+          <SaveButton />
           <CancelButton handleClick={handleEducationReset} />
         </div>
       </form>

@@ -112,18 +112,15 @@ function GeneralInfo({
     onEditModeReset();
   }
 
-  function handleSave() {
+  function handleSave(e) {
+    e.preventDefault();
     onDataSave(toBeEditedGeneralInfo);
     onEditModeReset();
   }
 
   return (
     <section id="general-info-section">
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-        }}
-      >
+      <form onSubmit={handleSave}>
         <h2>General Informations</h2>
         <FullNameInput
           className={inputClassName}
@@ -151,7 +148,7 @@ function GeneralInfo({
           className="button-section"
           style={{ display: editMode ? "block" : "none" }}
         >
-          <SaveButton handleClick={handleSave} />
+          <SaveButton />
           <CancelButton handleClick={handleGeneralInfoReset} />
         </div>
       </form>

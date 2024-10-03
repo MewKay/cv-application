@@ -2,6 +2,7 @@ import { useState } from "react";
 import MonthSelector from "./MonthSelector";
 import SaveButton from "./SaveButton";
 import CancelButton from "./CancelButton";
+import Button from "./Button";
 
 function CompanyNameInput({
   className,
@@ -102,6 +103,8 @@ function TextInputItem({
     <li>
       <input
         type="text"
+        minLength={8}
+        required
         value={mainRespData.bulletPointData}
         onChange={onBulletPointChange}
       ></input>
@@ -139,7 +142,12 @@ function MainRespAdder({
             );
           })}
         <li>
-          <button onClick={onAdditionBulletPoint}>Add more</button>
+          <Button
+            className={"add-bullet-button"}
+            handleClick={onAdditionBulletPoint}
+            buttonText={"Add more"}
+            type={"button"}
+          />
         </li>
       </ul>
     </fieldset>
@@ -298,18 +306,15 @@ function Experience({
     onEditModeReset();
   }
 
-  function handleSave() {
+  function handleSave(e) {
+    e.preventDefault();
     onDataSave(toBeEditedExperience);
     onEditModeReset();
   }
 
   return (
     <section>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-        }}
-      >
+      <form onSubmit={handleSave}>
         <h2>Add Experience</h2>
         <CompanyNameInput
           className={inputClassName}
@@ -352,7 +357,7 @@ function Experience({
           className="button-section"
           style={{ display: editMode ? "block" : "none" }}
         >
-          <SaveButton handleClick={handleSave} />
+          <SaveButton />
           <CancelButton handleClick={handleExperienceReset} />
         </div>
       </form>
