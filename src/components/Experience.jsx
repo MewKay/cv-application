@@ -163,13 +163,13 @@ function Experience({
 }) {
   const [toBeEditedExperience, setToBeEditedExperience] = useState({
     index: itemIndexToEdit,
-    data: { ...currentExperienceData[itemIndexToEdit] },
+    data: structuredClone(currentExperienceData[itemIndexToEdit]),
   });
 
   if (itemIndexToEdit !== toBeEditedExperience.index) {
     setToBeEditedExperience({
       index: itemIndexToEdit,
-      data: { ...currentExperienceData[itemIndexToEdit] },
+      data: structuredClone(currentExperienceData[itemIndexToEdit]),
     });
   }
 
@@ -256,9 +256,7 @@ function Experience({
 
   function handleBulletPointChange(e, bulletPointIndex) {
     const { index, data } = toBeEditedExperience;
-    const modifiedMainResp = data.mainResp.map((mainRespData) => {
-      return { ...mainRespData };
-    });
+    const modifiedMainResp = structuredClone(data.mainResp);
     modifiedMainResp[bulletPointIndex]["bulletPointData"] = e.target.value;
     data.mainResp = modifiedMainResp;
 
@@ -270,13 +268,11 @@ function Experience({
 
   function handleAdditionBulletPoint() {
     const { index, data } = toBeEditedExperience;
-    const modifiedMainResp = [
-      ...data.mainResp,
-      {
-        bulletPointKey: crypto.randomUUID(),
-        bulletPointData: "",
-      },
-    ];
+    const modifiedMainResp = structuredClone(data.mainResp);
+    modifiedMainResp.push({
+      bulletPointKey: crypto.randomUUID(),
+      bulletPointData: "",
+    });
     data.mainResp = modifiedMainResp;
 
     setToBeEditedExperience({
@@ -301,7 +297,7 @@ function Experience({
   function handleExperienceReset() {
     setToBeEditedExperience({
       index: itemIndexToEdit,
-      data: { ...currentExperienceData[itemIndexToEdit] },
+      data: structuredClone(currentExperienceData[itemIndexToEdit]),
     });
     onEditModeReset();
   }

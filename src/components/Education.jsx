@@ -81,13 +81,13 @@ function Education({
 }) {
   const [toBeEditedEducation, setToBeEditedEducation] = useState({
     index: itemIndexToEdit,
-    data: { ...currentEducationData[itemIndexToEdit] },
+    data: structuredClone(currentEducationData[itemIndexToEdit]),
   });
 
   if (itemIndexToEdit !== toBeEditedEducation.index) {
     setToBeEditedEducation({
       index: itemIndexToEdit,
-      data: { ...currentEducationData[itemIndexToEdit] },
+      data: structuredClone(currentEducationData[itemIndexToEdit]),
     });
   }
 
@@ -147,7 +147,7 @@ function Education({
   function handleEducationReset() {
     setToBeEditedEducation({
       index: itemIndexToEdit,
-      data: currentEducationData[itemIndexToEdit],
+      data: structuredClone(currentEducationData[itemIndexToEdit]),
     });
     onEditModeReset();
   }

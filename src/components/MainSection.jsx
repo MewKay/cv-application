@@ -4,7 +4,9 @@ import { useState } from "react";
 import resumeData from "../resumeData";
 
 function MainSection() {
-  const [currentResumeData, setCurrentResumeData] = useState(resumeData);
+  const [currentResumeData, setCurrentResumeData] = useState(
+    structuredClone(resumeData)
+  );
   const [dataEditMode, setDataEditMode] = useState({
     generalInfo: false,
     education: false,
@@ -54,8 +56,8 @@ function MainSection() {
 
   function handleEducationSave(editedEducationItem) {
     const { index, data } = editedEducationItem;
-    const editedEducationList = [...currentResumeData.education];
-    editedEducationList[index] = data;
+    const editedEducationList = structuredClone(currentResumeData.education);
+    editedEducationList[index] = structuredClone(data);
 
     setCurrentResumeData({
       ...currentResumeData,
@@ -65,8 +67,8 @@ function MainSection() {
 
   function handleExperienceSave(editedExperienceItem) {
     const { index, data } = editedExperienceItem;
-    const editedExperienceList = [...currentResumeData.experience];
-    editedExperienceList[index] = { ...data, mainResp: [...data.mainResp] };
+    const editedExperienceList = structuredClone(currentResumeData.experience);
+    editedExperienceList[index] = structuredClone(data);
 
     setCurrentResumeData({
       ...currentResumeData,
@@ -75,7 +77,7 @@ function MainSection() {
   }
 
   return (
-    <main>
+    <main style={{ display: "flex" }}>
       <EditSection
         dataEditMode={dataEditMode}
         currentResumeData={currentResumeData}
