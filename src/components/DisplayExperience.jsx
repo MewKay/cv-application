@@ -1,4 +1,3 @@
-import resumeData from "../resumeData";
 import DeleteButton from "./DeleteButton";
 import EditButton from "./EditButton";
 
@@ -38,9 +37,12 @@ function DisplayExperienceItem({
   );
 }
 
-function DisplayExperience({ editMode, onSetEditMode, onChangeItemToEdit }) {
-  const experienceList = resumeData.experience;
-
+function DisplayExperience({
+  experienceList,
+  editMode,
+  onSetEditMode,
+  onChangeItemToEdit,
+}) {
   return (
     <div id="display-experience">
       <h3>Experience</h3>

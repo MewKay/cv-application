@@ -1,4 +1,3 @@
-import resumeData from "../resumeData";
 import DeleteButton from "./DeleteButton";
 import EditButton from "./EditButton";
 
@@ -31,9 +30,12 @@ function DisplayEducationItem({
   );
 }
 
-function DisplayEducation({ editMode, onSetEditMode, onChangeItemToEdit }) {
-  const educationList = resumeData.education;
-
+function DisplayEducation({
+  educationList,
+  editMode,
+  onSetEditMode,
+  onChangeItemToEdit,
+}) {
   return (
     <div id="display-education">
       <h3>Education</h3>

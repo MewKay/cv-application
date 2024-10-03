@@ -1,10 +1,7 @@
-import resumeData from "../resumeData";
 import EditButton from "./EditButton";
 import DeleteButton from "./DeleteButton";
 
-function DisplayGeneralInfo({ onSetEditMode }) {
-  const general = resumeData.generalInfo;
-
+function DisplayGeneralInfo({ general, onSetEditMode }) {
   return (
     <div id="display-general-info">
       <h2>{general.fullName}</h2>

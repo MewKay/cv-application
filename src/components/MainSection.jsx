@@ -90,6 +90,7 @@ function MainSection() {
       />
       <DisplaySection
         dataEditMode={dataEditMode}
+        currentResumeData={currentResumeData}
         onGeneralInfoSetEditMode={handleGeneralInfoSetEditMode}
         onEducationSetEditMode={handleEducationSetEditMode}
         onExperienceSetEditMode={handleExperienceSetEditMode}

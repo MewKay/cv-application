@@ -4,6 +4,7 @@ import DisplayGeneralInfo from "./DisplayGeneralInfo";
 
 function DisplaySection({
   dataEditMode,
+  currentResumeData,
   onGeneralInfoSetEditMode,
   onEducationSetEditMode,
   onExperienceSetEditMode,
@@ -12,14 +13,19 @@ function DisplaySection({
 }) {
   return (
     <div className="display-section">
-      <DisplayGeneralInfo onSetEditMode={onGeneralInfoSetEditMode} />
+      <DisplayGeneralInfo
+        onSetEditMode={onGeneralInfoSetEditMode}
+        general={currentResumeData.generalInfo}
+      />
       <DisplayEducation
         editMode={dataEditMode.education}
+        educationList={currentResumeData.education}
         onSetEditMode={onEducationSetEditMode}
         onChangeItemToEdit={onChangeEducationItemToEdit}
       />
       <DisplayExperience
         editMode={dataEditMode.experience}
+        experienceList={currentResumeData.experience}
         onSetEditMode={onExperienceSetEditMode}
         onChangeItemToEdit={onChangeExperienceItemToEdit}
       />
