@@ -2,6 +2,7 @@ import { useState } from "react";
 import CancelButton from "./CancelButton";
 import MonthSelector from "./MonthSelector";
 import SaveButton from "./SaveButton";
+import Button from "./Button";
 
 function SchoolNameInput({
   className,
@@ -75,6 +76,7 @@ function EducationEndDateInput({
 function Education({
   editMode,
   onEditModeReset,
+  onSetEditMode,
   currentEducationData,
   itemIndexToEdit,
   onDataSave,
@@ -83,8 +85,9 @@ function Education({
     index: itemIndexToEdit,
     data: structuredClone(currentEducationData[itemIndexToEdit]),
   });
+  const [addMode, setAddMode] = useState(false);
 
-  if (itemIndexToEdit !== toBeEditedEducation.index) {
+  if (itemIndexToEdit !== toBeEditedEducation.index && !addMode) {
     setToBeEditedEducation({
       index: itemIndexToEdit,
       data: structuredClone(currentEducationData[itemIndexToEdit]),
@@ -144,24 +147,49 @@ function Education({
     });
   }
 
+  function handleAddItem() {
+    setAddMode(true);
+    onSetEditMode();
+    setToBeEditedEducation({
+      index: currentEducationData.length,
+      data: {
+        schoolName: "",
+        studyTitle: "",
+        endDate: `January ${new Date().getFullYear()}`,
+      },
+    });
+  }
+
   function handleEducationReset() {
     setToBeEditedEducation({
       index: itemIndexToEdit,
       data: structuredClone(currentEducationData[itemIndexToEdit]),
     });
     onEditModeReset();
+    setAddMode(false);
   }
 
   function handleSave(e) {
     e.preventDefault();
     onDataSave(toBeEditedEducation);
     onEditModeReset();
+    setAddMode(false);
   }
 
   return (
     <section id="education-section">
       <form onSubmit={handleSave}>
-        <h2>Add Education</h2>
+        <div>
+          <h2>Add Education</h2>
+          <Button
+            className={"add-item"}
+            buttonText={"+"}
+            type={"button"}
+            disabled={editMode}
+            handleClick={handleAddItem}
+          />
+        </div>
+
         <SchoolNameInput
           className={inputClassName}
           inputId={schoolNameInputId}

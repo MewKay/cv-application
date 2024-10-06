@@ -84,9 +84,10 @@ function MainSection() {
         educationItemIndexToEdit={educationItemIndexToEdit}
         experienceItemIndexToEdit={experienceItemIndexToEdit}
         onGeneralInfoEditModeReset={handleGeneralInfoEditModeReset}
-        onGeneralInfoSave={handleGeneralInfoSave}
         onEducationEditModeReset={handleEducationEditModeReset}
         onExperienceEditModeReset={handleExperienceEditModeReset}
+        onEducationSetEditMode={handleEducationSetEditMode}
+        onGeneralInfoSave={handleGeneralInfoSave}
         onEducationSave={handleEducationSave}
         onExperienceSave={handleExperienceSave}
       />
