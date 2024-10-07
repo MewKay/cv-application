@@ -87,6 +87,7 @@ function MainSection() {
         onEducationEditModeReset={handleEducationEditModeReset}
         onExperienceEditModeReset={handleExperienceEditModeReset}
         onEducationSetEditMode={handleEducationSetEditMode}
+        onExperienceSetEditMode={handleExperienceSetEditMode}
         onGeneralInfoSave={handleGeneralInfoSave}
         onEducationSave={handleEducationSave}
         onExperienceSave={handleExperienceSave}

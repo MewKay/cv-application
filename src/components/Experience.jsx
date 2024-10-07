@@ -121,6 +121,7 @@ function TextInputItem({
 function MainRespAdder({
   className,
   editMode,
+  onSetEditMode,
   mainRespDataList,
   onBulletPointChange,
   onAdditionBulletPoint,
@@ -157,6 +158,7 @@ function MainRespAdder({
 function Experience({
   editMode,
   onEditModeReset,
+  onSetEditMode,
   currentExperienceData,
   itemIndexToEdit,
   onDataSave,
@@ -165,8 +167,9 @@ function Experience({
     index: itemIndexToEdit,
     data: structuredClone(currentExperienceData[itemIndexToEdit]),
   });
+  const [addMode, setAddMode] = useState(false);
 
-  if (itemIndexToEdit !== toBeEditedExperience.index) {
+  if (itemIndexToEdit !== toBeEditedExperience.index && !addMode) {
     setToBeEditedExperience({
       index: itemIndexToEdit,
       data: structuredClone(currentExperienceData[itemIndexToEdit]),
@@ -294,24 +297,50 @@ function Experience({
     });
   }
 
+  function handleAddItem() {
+    setAddMode(true);
+    onSetEditMode();
+    setToBeEditedExperience({
+      index: currentExperienceData.length,
+      data: {
+        companyName: "",
+        positionTitle: "",
+        workStart: `January ${new Date().getFullYear()}`,
+        workEnd: `January ${new Date().getFullYear()}`,
+        mainResp: [],
+      },
+    });
+  }
+
   function handleExperienceReset() {
     setToBeEditedExperience({
       index: itemIndexToEdit,
       data: structuredClone(currentExperienceData[itemIndexToEdit]),
     });
     onEditModeReset();
+    setAddMode(false);
   }
 
   function handleSave(e) {
     e.preventDefault();
     onDataSave(toBeEditedExperience);
     onEditModeReset();
+    setAddMode(false);
   }
 
   return (
     <section>
       <form onSubmit={handleSave}>
-        <h2>Add Experience</h2>
+        <div>
+          <h2>Add Experience</h2>
+          <Button
+            className={"add-item"}
+            buttonText={"+"}
+            type={"button"}
+            disabled={editMode}
+            handleClick={handleAddItem}
+          />
+        </div>
         <CompanyNameInput
           className={inputClassName}
           inputId={companyNameInputId}
