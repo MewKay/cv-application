@@ -87,6 +87,17 @@ function MainSection() {
     });
   }
 
+  function handleEducationItemDeleteData(itemIndexToDelete) {
+    let modifiedEducationList = structuredClone(
+      currentResumeData.education
+    ).filter((educationItem, index) => itemIndexToDelete !== index);
+
+    setCurrentResumeData({
+      ...currentResumeData,
+      education: modifiedEducationList,
+    });
+  }
+
   return (
     <main style={{ display: "flex" }}>
       <EditSection
@@ -112,6 +123,7 @@ function MainSection() {
         onChangeEducationItemToEdit={handleChangeEducationItemToEdit}
         onChangeExperienceItemToEdit={handleChangeExperienceItemToEdit}
         onDeleteGeneralInfoData={handleGeneralInfoDeleteData}
+        onDeleteEducationItem={handleEducationItemDeleteData}
       />
     </main>
   );

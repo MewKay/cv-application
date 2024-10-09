@@ -7,6 +7,7 @@ function DisplayEducationItem({
   educationItem,
   onSetEditMode,
   onChangeItemToEdit,
+  onDeleteItem,
 }) {
   function handleGetItemToEdit() {
     if (editMode) {
@@ -17,6 +18,14 @@ function DisplayEducationItem({
     onSetEditMode();
   }
 
+  function handleGetItemToDelete() {
+    if (editMode) {
+      return;
+    }
+
+    onDeleteItem(educationItemIndex);
+  }
+
   return (
     <div className="education-item">
       <div className="school-end-date-section">
@@ -25,7 +34,7 @@ function DisplayEducationItem({
       </div>
       <p className="display-study-title">{educationItem.studyTitle}</p>
       <EditButton handleClick={handleGetItemToEdit} />
-      <DeleteButton />
+      <DeleteButton handleClick={handleGetItemToDelete} />
     </div>
   );
 }
@@ -35,6 +44,7 @@ function DisplayEducation({
   editMode,
   onSetEditMode,
   onChangeItemToEdit,
+  onDeleteItem,
 }) {
   return (
     <div id="display-education">
@@ -49,6 +59,7 @@ function DisplayEducation({
               key={crypto.randomUUID()}
               onSetEditMode={onSetEditMode}
               onChangeItemToEdit={onChangeItemToEdit}
+              onDeleteItem={onDeleteItem}
             />
           );
         })}

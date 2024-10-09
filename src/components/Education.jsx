@@ -86,12 +86,19 @@ function Education({
     data: structuredClone(currentEducationData[itemIndexToEdit]),
   });
   const [addMode, setAddMode] = useState(false);
+  const [previousEducationItem, setPreviousEducationItem] = useState(
+    currentEducationData[itemIndexToEdit]
+  );
 
-  if (itemIndexToEdit !== toBeEditedEducation.index && !addMode) {
+  if (
+    previousEducationItem !== currentEducationData[itemIndexToEdit] &&
+    !addMode
+  ) {
     setToBeEditedEducation({
       index: itemIndexToEdit,
       data: structuredClone(currentEducationData[itemIndexToEdit]),
     });
+    setPreviousEducationItem(currentEducationData[itemIndexToEdit]);
   }
 
   const inputClassName = "education-input";
@@ -100,7 +107,12 @@ function Education({
   const educationEndDateInputId = "education-end-date-input";
   const namePartId = "education-end-date";
 
-  const { data } = toBeEditedEducation;
+  const defaultDataValue = {
+    schoolName: "",
+    studyTitle: "",
+    endDate: `January ${new Date().getFullYear()}`,
+  };
+  const { data = defaultDataValue } = toBeEditedEducation;
   const schoolNameData = data.schoolName;
   const studyTitleData = data.studyTitle;
   const endDateData = data.endDate.split(" ");
