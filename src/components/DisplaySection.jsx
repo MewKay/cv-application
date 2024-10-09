@@ -10,11 +10,13 @@ function DisplaySection({
   onExperienceSetEditMode,
   onChangeEducationItemToEdit,
   onChangeExperienceItemToEdit,
+  onDeleteGeneralInfoData,
 }) {
   return (
     <div className="display-section">
       <DisplayGeneralInfo
         onSetEditMode={onGeneralInfoSetEditMode}
+        onDeleteData={onDeleteGeneralInfoData}
         general={currentResumeData.generalInfo}
       />
       <DisplayEducation

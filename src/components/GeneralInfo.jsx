@@ -76,6 +76,14 @@ function GeneralInfo({
   const [toBeEditedGeneralInfo, setToBeEditedGeneralInfo] = useState(
     currentGeneralInfoData
   );
+  const [previousGeneralInfo, setPreviousGeneralInfo] = useState(
+    currentGeneralInfoData
+  );
+
+  if (currentGeneralInfoData !== previousGeneralInfo) {
+    setToBeEditedGeneralInfo(currentGeneralInfoData);
+    setPreviousGeneralInfo(currentGeneralInfoData);
+  }
 
   const inputClassName = "general-info-input";
   const fullNameInputId = "full-name-input";
@@ -85,6 +93,8 @@ function GeneralInfo({
   const fullNameData = toBeEditedGeneralInfo.fullName;
   const phoneNumberData = toBeEditedGeneralInfo.phoneNumber;
   const emailData = toBeEditedGeneralInfo.email;
+
+  const isFullNameBlank = currentGeneralInfoData.fullName.length <= 0;
 
   function handleFullNameChange(e) {
     setToBeEditedGeneralInfo({
@@ -108,8 +118,11 @@ function GeneralInfo({
   }
 
   function handleGeneralInfoReset() {
+    if (!isFullNameBlank) {
+      onEditModeReset();
+    }
+
     setToBeEditedGeneralInfo(currentGeneralInfoData);
-    onEditModeReset();
   }
 
   function handleSave(e) {

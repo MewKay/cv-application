@@ -76,6 +76,17 @@ function MainSection() {
     });
   }
 
+  function handleGeneralInfoDeleteData() {
+    setCurrentResumeData({
+      ...currentResumeData,
+      generalInfo: {
+        fullName: "",
+        phoneNumber: "",
+        email: "",
+      },
+    });
+  }
+
   return (
     <main style={{ display: "flex" }}>
       <EditSection
@@ -100,6 +111,7 @@ function MainSection() {
         onExperienceSetEditMode={handleExperienceSetEditMode}
         onChangeEducationItemToEdit={handleChangeEducationItemToEdit}
         onChangeExperienceItemToEdit={handleChangeExperienceItemToEdit}
+        onDeleteGeneralInfoData={handleGeneralInfoDeleteData}
       />
     </main>
   );
