@@ -12,6 +12,7 @@ function DisplaySection({
   onChangeExperienceItemToEdit,
   onDeleteGeneralInfoData,
   onDeleteEducationItem,
+  onDeleteExperienceItem,
 }) {
   return (
     <div className="display-section">
@@ -32,6 +33,7 @@ function DisplaySection({
         experienceList={currentResumeData.experience}
         onSetEditMode={onExperienceSetEditMode}
         onChangeItemToEdit={onChangeExperienceItemToEdit}
+        onDeleteItem={onDeleteExperienceItem}
       />
     </div>
   );

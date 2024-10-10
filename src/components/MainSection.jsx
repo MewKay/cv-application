@@ -98,6 +98,17 @@ function MainSection() {
     });
   }
 
+  function handleExperienceItemDeleteData(itemIndexToDelete) {
+    let modifiedExperienceList = structuredClone(
+      currentResumeData.experience
+    ).filter((experienceItem, index) => itemIndexToDelete !== index);
+
+    setCurrentResumeData({
+      ...currentResumeData,
+      experience: modifiedExperienceList,
+    });
+  }
+
   return (
     <main style={{ display: "flex" }}>
       <EditSection
@@ -124,6 +135,7 @@ function MainSection() {
         onChangeExperienceItemToEdit={handleChangeExperienceItemToEdit}
         onDeleteGeneralInfoData={handleGeneralInfoDeleteData}
         onDeleteEducationItem={handleEducationItemDeleteData}
+        onDeleteExperienceItem={handleExperienceItemDeleteData}
       />
     </main>
   );

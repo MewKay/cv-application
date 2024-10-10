@@ -168,12 +168,19 @@ function Experience({
     data: structuredClone(currentExperienceData[itemIndexToEdit]),
   });
   const [addMode, setAddMode] = useState(false);
+  const [previousExperienceItem, setPreviousExperienceItem] = useState(
+    currentExperienceData[itemIndexToEdit]
+  );
 
-  if (itemIndexToEdit !== toBeEditedExperience.index && !addMode) {
+  if (
+    previousExperienceItem !== currentExperienceData[itemIndexToEdit] &&
+    !addMode
+  ) {
     setToBeEditedExperience({
       index: itemIndexToEdit,
       data: structuredClone(currentExperienceData[itemIndexToEdit]),
     });
+    setPreviousExperienceItem(currentExperienceData[itemIndexToEdit]);
   }
 
   const inputClassName = "experience-input";
@@ -183,7 +190,14 @@ function Experience({
   const workStartNamePartId = "work-start";
   const workEndNamePartId = "work-end";
 
-  const { data } = toBeEditedExperience;
+  const defaultDataValue = {
+    companyName: "",
+    positionTitle: "",
+    workStart: `January ${new Date().getFullYear()}`,
+    workEnd: `January ${new Date().getFullYear()}`,
+    mainResp: [],
+  };
+  const { data = defaultDataValue } = toBeEditedExperience;
   const companyNameData = data.companyName;
   const positionTitleData = data.positionTitle;
 

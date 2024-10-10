@@ -7,6 +7,7 @@ function DisplayExperienceItem({
   experienceItem,
   onSetEditMode,
   onChangeItemToEdit,
+  onDeleteItem,
 }) {
   function handleGetItemToEdit() {
     if (editMode) {
@@ -15,6 +16,14 @@ function DisplayExperienceItem({
 
     onChangeItemToEdit(experienceItemIndex);
     onSetEditMode();
+  }
+
+  function handleGetItemToDelete() {
+    if (editMode) {
+      return;
+    }
+
+    onDeleteItem(experienceItemIndex);
   }
 
   return (
@@ -32,7 +41,7 @@ function DisplayExperienceItem({
         ))}
       </ul>
       <EditButton handleClick={handleGetItemToEdit} />
-      <DeleteButton />
+      <DeleteButton handleClick={handleGetItemToDelete} />
     </div>
   );
 }
@@ -42,6 +51,7 @@ function DisplayExperience({
   editMode,
   onSetEditMode,
   onChangeItemToEdit,
+  onDeleteItem,
 }) {
   return (
     <div id="display-experience">
@@ -54,6 +64,7 @@ function DisplayExperience({
             experienceItem={experienceItem}
             onSetEditMode={onSetEditMode}
             onChangeItemToEdit={onChangeItemToEdit}
+            onDeleteItem={onDeleteItem}
             key={crypto.randomUUID()}
           />
         ))}
