@@ -2,7 +2,7 @@ import { useState } from "react";
 import CancelButton from "./CancelButton";
 import MonthSelector from "./MonthSelector";
 import SaveButton from "./SaveButton";
-import Button from "./Button";
+import Button from "../Button";
 
 function SchoolNameInput({
   className,

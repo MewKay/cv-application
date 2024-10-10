@@ -1,5 +1,5 @@
-import EditSection from "./EditSection";
-import DisplaySection from "./DisplaySection";
+import EditSection from "./EditSection/EditSection";
+import DisplaySection from "./DisplaySection/DisplaySection";
 import { useState } from "react";
 import resumeData from "../resumeData";
 
