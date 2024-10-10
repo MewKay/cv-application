@@ -2,8 +2,10 @@
 :root {
   --text: #0f0e1c;
   --primary: #0f0e1c;
-  --background-0: #e5e4f1;
-  --background-1: #b1afd5;
+  --background-0: #f2f2f8;
+  --background-1: #cbcae3;
+  --green: #366d62;
+  --red: #be3749;
   --font-heading: "Roboto Condensed";
   --font-text: "Roboto";
 }
@@ -26,6 +28,27 @@ header {
   padding: 1rem 1rem;
 }
 
+/* --- Main Content --- */
+
+main {
+  flex: 1;
+  padding: 1rem 2rem;
+  display: flex;
+  gap: 1rem;
+}
+
+/* ---- Edit Section ---- */
+
+.edit-section {
+  flex: 2;
+}
+
+/* ---- Display Section ---- */
+
+.display-section {
+  flex: 3;
+}
+
 /* -- Style -- */
 
 /* --- Header --- */
@@ -39,4 +62,10 @@ header h1 {
   font-family: var(--font-heading);
   letter-spacing: 1px;
   color: var(--background-0);
+}
+
+/* --- Main Section --- */
+
+main {
+  background-color: var(--background-1);
 }
