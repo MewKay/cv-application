@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+:root {
+  --text: #0f0e1c;
+  --primary: #0f0e1c;
+  --background-0: #e5e4f1;
+  --background-1: #b1afd5;
+  --font-heading: "Roboto Condensed";
+  --font-text: "Roboto";
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: var(--text);
+  font-family: var(--font-text);
+}
+
+/* -- Layout -- */
+
+/* --- Header --- */
+
+header {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 1rem;
+}
+
+/* -- Style -- */
+
+/* --- Header --- */
+
+header {
+  background-color: var(--primary);
+}
+
+header h1 {
+  font-size: 1.7rem;
+  font-family: var(--font-heading);
+  letter-spacing: 1px;
+  color: var(--background-0);
+}

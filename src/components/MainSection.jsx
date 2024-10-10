@@ -110,7 +110,7 @@ function MainSection() {
   }
 
   return (
-    <main style={{ display: "flex" }}>
+    <main>
       <EditSection
         dataEditMode={dataEditMode}
         currentResumeData={currentResumeData}
