@@ -13,7 +13,9 @@ function CompanyNameInput({
 }) {
   return (
     <div className={className}>
-      <label htmlFor={inputId}>Company Name :</label>
+      <label htmlFor={inputId} disabled={!editMode}>
+        Company Name :
+      </label>
       <input
         id={inputId}
         type="text"
@@ -35,7 +37,9 @@ function PositionTitleInput({
 }) {
   return (
     <div className={className}>
-      <label htmlFor={inputId}>Position Title :</label>
+      <label htmlFor={inputId} disabled={!editMode}>
+        Position Title :
+      </label>
       <input
         id={inputId}
         type="text"
@@ -65,7 +69,7 @@ function WorkDurationInput({
 }) {
   return (
     <fieldset className={className} disabled={!editMode}>
-      <legend>Work Duration :</legend>
+      <legend disabled={!editMode}>Work Duration :</legend>
 
       <div id="work-start-select">
         <label>From :</label>
@@ -112,7 +116,7 @@ function TextInputItem({
         className={"bullet-point-delete-button"}
         onClick={() => onDeletionBulletPoint(mainRespData.bulletPointKey)}
       >
-        X
+        x
       </button>
     </li>
   );
@@ -129,7 +133,7 @@ function MainRespAdder({
 }) {
   return (
     <fieldset className={className} disabled={!editMode}>
-      <legend>Main Responsibilities :</legend>
+      <legend disabled={!editMode}>Main Responsibilities :</legend>
       <ul>
         {editMode &&
           mainRespDataList.map((mainRespData, index) => {
@@ -343,9 +347,9 @@ function Experience({
   }
 
   return (
-    <section>
+    <section id="experience-section">
       <form onSubmit={handleSave}>
-        <div>
+        <div className="section-title">
           <h2>Add Experience</h2>
           <Button
             className={"add-item"}
@@ -392,10 +396,7 @@ function Experience({
           onAdditionBulletPoint={handleAdditionBulletPoint}
           onDeletionBulletPoint={handleDeletionBulletPoint}
         />
-        <div
-          className="button-section"
-          style={{ display: editMode ? "block" : "none" }}
-        >
+        <div className={`button-section ${!editMode ? "hidden" : ""}`}>
           <SaveButton />
           <CancelButton handleClick={handleExperienceReset} />
         </div>

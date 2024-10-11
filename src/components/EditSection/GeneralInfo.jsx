@@ -11,7 +11,9 @@ function FullNameInput({
 }) {
   return (
     <div className={className}>
-      <label htmlFor={inputId}>Full Name :</label>
+      <label htmlFor={inputId} disabled={!editMode}>
+        Full Name :
+      </label>
       <input
         id={inputId}
         type="text"
@@ -33,7 +35,9 @@ function EmailInput({
 }) {
   return (
     <div className={className}>
-      <label htmlFor={inputId}>Email :</label>
+      <label htmlFor={inputId} disabled={!editMode}>
+        Email :
+      </label>
       <input
         id={inputId}
         type="email"
@@ -55,7 +59,9 @@ function PhoneNumberInput({
 }) {
   return (
     <div className={className}>
-      <label htmlFor={inputId}>Phone Number :</label>
+      <label htmlFor={inputId} disabled={!editMode}>
+        Phone Number :
+      </label>
       <input
         id={inputId}
         type="tel"
@@ -134,7 +140,7 @@ function GeneralInfo({
   return (
     <section id="general-info-section">
       <form onSubmit={handleSave}>
-        <h2>General Informations</h2>
+        <h2 className="section-title">General Informations</h2>
         <FullNameInput
           className={inputClassName}
           inputId={fullNameInputId}
@@ -157,10 +163,7 @@ function GeneralInfo({
           handlePhoneNumberChange={handlePhoneNumberChange}
         />
 
-        <div
-          className="button-section"
-          style={{ display: editMode ? "block" : "none" }}
-        >
+        <div className={`button-section ${!editMode ? "hidden" : ""}`}>
           <SaveButton />
           <CancelButton handleClick={handleGeneralInfoReset} />
         </div>

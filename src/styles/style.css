@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
 :root {
   --text: #0f0e1c;
   --primary: #0f0e1c;
@@ -18,6 +19,11 @@
   font-family: var(--font-text);
 }
 
+button:not(:disabled):hover,
+select:not(:disabled):hover {
+  cursor: pointer;
+}
+
 /* -- Layout -- */
 
 /* --- Header --- */
@@ -32,15 +38,136 @@ header {
 
 main {
   flex: 1;
-  padding: 1rem 2rem;
+  padding: 1.5rem 2rem;
   display: flex;
-  gap: 1rem;
+  gap: 3rem;
 }
 
 /* ---- Edit Section ---- */
 
 .edit-section {
   flex: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-section section {
+  margin-bottom: 2rem;
+  margin-right: auto;
+  padding: 1.2rem 2rem;
+  min-width: 415px;
+}
+
+.edit-section .section-title {
+  margin-bottom: 0.7rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-section form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 0.5rem;
+}
+
+.edit-section div[class$="-input"] {
+  display: flex;
+  gap: 0.4rem;
+  justify-content: baseline;
+  align-items: center;
+  padding-left: 6px;
+}
+
+.edit-section input[type="text"],
+.edit-section input[type="email"],
+.edit-section input[type="tel"] {
+  flex: 1;
+  padding: 0.1rem 0.6rem;
+}
+
+.edit-section .button-section {
+  display: flex;
+  justify-content: end;
+  gap: 0.4rem;
+  margin-top: 0.8rem;
+}
+
+.edit-section .button-section button {
+  padding: 0.1rem 0.8rem;
+}
+
+#education-section fieldset label {
+  margin-right: 0.4rem;
+}
+
+#education-section fieldset div {
+  display: flex;
+  justify-content: space-around;
+}
+
+fieldset {
+  padding-left: 5px;
+}
+
+legend {
+  padding-left: 0px;
+}
+
+select {
+  padding: 0.1rem 0.4rem;
+}
+
+#experience-section fieldset {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+#experience-section fieldset > div {
+  display: flex;
+  flex-direction: column;
+}
+
+#experience-section fieldset > div > div {
+  display: flex;
+  gap: 1rem;
+}
+
+#experience-section fieldset label {
+  margin-right: 0.4rem;
+}
+
+#experience-section fieldset:last-of-type {
+  display: flex;
+  align-items: stretch;
+}
+
+#experience-section fieldset:last-of-type ul {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding-left: 0.8rem;
+}
+
+#experience-section fieldset:last-of-type ul li {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.bullet-point-delete-button {
+  padding: 0rem 0.602rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-bullet-button {
+  padding: 0.1rem 0.5rem;
+  margin-top: 0.7rem;
 }
 
 /* ---- Display Section ---- */
@@ -68,4 +195,134 @@ header h1 {
 
 main {
   background-color: var(--background-1);
+}
+
+/* ---- Edit Section ---- */
+
+.edit-section section {
+  background-color: var(--background-0);
+  border-radius: 25px;
+}
+
+.edit-section h2 {
+  font-family: var(--font-heading);
+}
+
+.edit-section .section-title button {
+  border: solid 2px var(--background-0);
+  border-radius: 6px;
+  background-color: var(--background-0);
+  padding: 0.2rem 0.6rem;
+  line-height: 1.6rem;
+  color: var(--text);
+  font-size: 2rem;
+}
+
+.edit-section div[class$="-input"] {
+  font-size: 1rem;
+}
+
+.edit-section input[type="text"],
+.edit-section input[type="email"],
+.edit-section input[type="tel"] {
+  border: solid 1px var(--background-1);
+  border-radius: 5px;
+}
+
+.edit-section .button-section button {
+  border: none;
+  border-radius: 6px;
+  color: var(--background-0);
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.edit-section .button-section button:hover {
+  filter: brightness(1.1);
+}
+
+.edit-section .button-section button:active {
+  filter: brightness(1.2);
+}
+
+.edit-section .button-section .save-button {
+  background-color: var(--green);
+}
+
+.edit-section .button-section .cancel-button {
+  background-color: var(--red);
+}
+
+.edit-section .section-title button:not(:disabled):hover {
+  border: solid 2px var(--text);
+}
+
+.edit-section label[disabled],
+.edit-section legend[disabled],
+.edit-section .section-title button:disabled,
+.add-bullet-button:disabled {
+  opacity: 30%;
+}
+
+.edit-section .section-title button:active:not(:disabled) {
+  background-color: lightgrey;
+}
+
+.edit-section .button-section.hidden {
+  visibility: hidden;
+}
+
+.edit-section label:not(fieldset label),
+legend {
+  font-weight: bold;
+}
+
+fieldset {
+  border: solid 1px var(--background-1);
+  border-radius: 5px;
+}
+
+select {
+  background-color: white;
+  border: solid 1px var(--background-1);
+  border-radius: 5px;
+}
+
+select:hover:not(:disabled),
+.bullet-point-delete-button:hover {
+  background-color: lightgrey;
+}
+
+select:active:not(:disabled),
+.bullet-point-delete-button:active {
+  background-color: grey;
+}
+
+#experience-section fieldset > div > label {
+  font-style: italic;
+  font-weight: 500;
+}
+
+.bullet-point-delete-button {
+  border: solid 1px var(--text);
+  border-radius: 50%;
+  background-color: white;
+  color: var(--text);
+}
+
+.add-bullet-button {
+  border: none;
+  border-radius: 6px;
+  background-color: var(--text);
+  color: var(--background-0);
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.add-bullet-button:hover:not(:disabled) {
+  filter: brightness(1.6);
+}
+
+.add-bullet-button:active:not(:disabled) {
+  filter: brightness(2);
 }

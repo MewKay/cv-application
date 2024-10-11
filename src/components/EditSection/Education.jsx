@@ -13,7 +13,9 @@ function SchoolNameInput({
 }) {
   return (
     <div className={className}>
-      <label htmlFor={inputId}>School Name :</label>
+      <label htmlFor={inputId} disabled={!editMode}>
+        School Name :
+      </label>
       <input
         id={inputId}
         type="text"
@@ -35,7 +37,9 @@ function StudyTitleInput({
 }) {
   return (
     <div className={className}>
-      <label htmlFor={inputId}>Title of Study :</label>
+      <label htmlFor={inputId} disabled={!editMode}>
+        Title of Study :
+      </label>
       <input
         id={inputId}
         type="text"
@@ -60,7 +64,7 @@ function EducationEndDateInput({
 }) {
   return (
     <fieldset className={className} disabled={!editMode}>
-      <legend>Completion By :</legend>
+      <legend disabled={!editMode}>Completion By :</legend>
       <MonthSelector
         id={inputId}
         namePartId={namePartId}
@@ -191,7 +195,7 @@ function Education({
   return (
     <section id="education-section">
       <form onSubmit={handleSave}>
-        <div>
+        <div className="section-title">
           <h2>Add Education</h2>
           <Button
             className={"add-item"}
@@ -227,10 +231,7 @@ function Education({
           onYearChange={handleEndDateYearChange}
         />
 
-        <div
-          className="button-section"
-          style={{ display: editMode ? "block" : "none" }}
-        >
+        <div className={`button-section ${!editMode ? "hidden" : ""}`}>
           <SaveButton />
           <CancelButton handleClick={handleEducationReset} />
         </div>
