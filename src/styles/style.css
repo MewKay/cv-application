@@ -7,6 +7,7 @@
   --background-1: #cbcae3;
   --green: #366d62;
   --red: #be3749;
+  --transparent: rgba(0, 0, 0, 0);
   --font-heading: "Roboto Condensed";
   --font-text: "Roboto";
   --font-text-serif: "Roboto Serif";
@@ -168,7 +169,7 @@ select {
 }
 
 .bullet-point-delete-button {
-  padding: 0rem 0.602rem;
+  padding: 0rem 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -216,9 +217,16 @@ select {
 .display-container .button-section {
   display: flex;
   flex-direction: column;
+  gap: 0.4rem;
   position: absolute;
-  right: -5%;
+  right: -4%;
   top: 0;
+}
+
+.display-container .button-section button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .display-section h3 {
@@ -377,7 +385,9 @@ select:active:not(:disabled),
   background-color: white;
   color: var(--text);
 }
-
+.bullet-point-delete-button svg {
+  font-size: 0.7rem;
+}
 .add-bullet-button {
   border: none;
   border-radius: 6px;
@@ -411,6 +421,15 @@ select:active:not(:disabled),
   font-size: 1.5rem;
   text-align: center;
   border-bottom: solid 2px var(--text);
+}
+
+.display-container .button-section button {
+  border: solid 2px var(--transparent);
+  border-radius: 5px;
+  background-color: var(--transparent);
+}
+.display-container .button-section button:hover {
+  border: solid 2px var(--text);
 }
 
 #display-education .display-school-name,

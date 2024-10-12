@@ -3,6 +3,7 @@ import MonthSelector from "./MonthSelector";
 import SaveButton from "./SaveButton";
 import CancelButton from "./CancelButton";
 import Button from "../Button";
+import ClearIcon from "@mui/icons-material/Clear";
 
 function CompanyNameInput({
   className,
@@ -118,7 +119,7 @@ function TextInputItem({
         className={"bullet-point-delete-button"}
         onClick={() => onDeletionBulletPoint(mainRespData.bulletPointKey)}
       >
-        x
+        <ClearIcon />
       </button>
     </li>
   );
