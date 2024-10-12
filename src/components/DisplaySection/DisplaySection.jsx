@@ -16,25 +16,27 @@ function DisplaySection({
 }) {
   return (
     <div className="display-section">
-      <DisplayGeneralInfo
-        onSetEditMode={onGeneralInfoSetEditMode}
-        onDeleteData={onDeleteGeneralInfoData}
-        general={currentResumeData.generalInfo}
-      />
-      <DisplayEducation
-        editMode={dataEditMode.education}
-        educationList={currentResumeData.education}
-        onSetEditMode={onEducationSetEditMode}
-        onChangeItemToEdit={onChangeEducationItemToEdit}
-        onDeleteItem={onDeleteEducationItem}
-      />
-      <DisplayExperience
-        editMode={dataEditMode.experience}
-        experienceList={currentResumeData.experience}
-        onSetEditMode={onExperienceSetEditMode}
-        onChangeItemToEdit={onChangeExperienceItemToEdit}
-        onDeleteItem={onDeleteExperienceItem}
-      />
+      <div className="display-container">
+        <DisplayGeneralInfo
+          onSetEditMode={onGeneralInfoSetEditMode}
+          onDeleteData={onDeleteGeneralInfoData}
+          general={currentResumeData.generalInfo}
+        />
+        <DisplayEducation
+          editMode={dataEditMode.education}
+          educationList={currentResumeData.education}
+          onSetEditMode={onEducationSetEditMode}
+          onChangeItemToEdit={onChangeEducationItemToEdit}
+          onDeleteItem={onDeleteEducationItem}
+        />
+        <DisplayExperience
+          editMode={dataEditMode.experience}
+          experienceList={currentResumeData.experience}
+          onSetEditMode={onExperienceSetEditMode}
+          onChangeItemToEdit={onChangeExperienceItemToEdit}
+          onDeleteItem={onDeleteExperienceItem}
+        />
+      </div>
     </div>
   );
 }

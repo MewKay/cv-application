@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap");
 
 :root {
   --text: #0f0e1c;
@@ -9,6 +9,7 @@
   --red: #be3749;
   --font-heading: "Roboto Condensed";
   --font-text: "Roboto";
+  --font-text-serif: "Roboto Serif";
 }
 
 #root {
@@ -22,6 +23,14 @@
 button:not(:disabled):hover,
 select:not(:disabled):hover {
   cursor: pointer;
+}
+
+.button-section.hidden {
+  visibility: hidden;
+}
+
+.required {
+  color: var(--red);
 }
 
 /* -- Layout -- */
@@ -40,7 +49,7 @@ main {
   flex: 1;
   padding: 1.5rem 2rem;
   display: flex;
-  gap: 3rem;
+  gap: 2rem;
 }
 
 /* ---- Edit Section ---- */
@@ -55,7 +64,7 @@ main {
   margin-bottom: 2rem;
   margin-right: auto;
   padding: 1.2rem 2rem;
-  min-width: 415px;
+  min-width: 425px;
 }
 
 .edit-section .section-title {
@@ -176,6 +185,69 @@ select {
   flex: 3;
 }
 
+.display-container {
+  display: flex;
+  flex-direction: column;
+  max-height: fit-content;
+  padding: 2rem 3rem;
+  gap: 1.5rem;
+}
+
+#display-general-info {
+  display: flex;
+  align-items: stretch;
+  text-align: center;
+  position: relative;
+}
+
+#display-general-info .data-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.display-additional-info {
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.display-container .button-section {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: -5%;
+  top: 0;
+}
+
+.display-section h3 {
+  padding-bottom: 0.2rem;
+  margin-bottom: 1rem;
+}
+
+.display-education-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#display-education .education-item,
+#display-experience .experience-item {
+  position: relative;
+}
+
+#display-education .data-section .school-end-date-section,
+#display-experience .data-section .company-name-duration-section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.3rem;
+}
+
+.main-resp-list-container {
+  margin-top: 0.4rem;
+}
+
 /* -- Style -- */
 
 /* --- Header --- */
@@ -268,10 +340,6 @@ main {
   background-color: lightgrey;
 }
 
-.edit-section .button-section.hidden {
-  visibility: hidden;
-}
-
 .edit-section label:not(fieldset label),
 legend {
   font-weight: bold;
@@ -325,4 +393,33 @@ select:active:not(:disabled),
 
 .add-bullet-button:active:not(:disabled) {
   filter: brightness(2);
+}
+
+/* ---- Display Section ---- */
+
+.display-container {
+  background-color: var(--background-0);
+  border-radius: 10px;
+  font-family: var(--font-text-serif);
+}
+
+.display-section h2 {
+  font-size: 2rem;
+}
+
+.display-section h3 {
+  font-size: 1.5rem;
+  text-align: center;
+  border-bottom: solid 2px var(--text);
+}
+
+#display-education .display-school-name,
+#display-experience .display-company-name {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+#display-education .display-study-title,
+#display-experience .display-position-title {
+  font-style: italic;
 }

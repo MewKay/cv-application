@@ -1,3 +1,4 @@
+import { useState } from "react";
 import DeleteButton from "./DeleteButton";
 import EditButton from "./EditButton";
 
@@ -9,6 +10,16 @@ function DisplayExperienceItem({
   onChangeItemToEdit,
   onDeleteItem,
 }) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  function onMouseEnter() {
+    setIsHovered(true);
+  }
+
+  function onMouseLeave() {
+    setIsHovered(false);
+  }
+
   function handleGetItemToEdit() {
     if (editMode) {
       return;
@@ -27,21 +38,29 @@ function DisplayExperienceItem({
   }
 
   return (
-    <div className="experience-item">
-      <div className="company-name-duration-section">
-        <p className="display-company-name">{experienceItem.companyName}</p>
-        <p className="display-work-duration">{`${experienceItem.workStart} - ${experienceItem.workEnd}`}</p>
+    <div
+      className="experience-item"
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
+      <div className="data-section">
+        <div className="company-name-duration-section">
+          <p className="display-company-name">{experienceItem.companyName}</p>
+          <p className="display-work-duration">{`${experienceItem.workStart} - ${experienceItem.workEnd}`}</p>
+        </div>
+        <p className="display-position-title">{experienceItem.positionTitle}</p>
+        <ul className="main-resp-list-container">
+          {experienceItem.mainResp.map((mainRespItem) => (
+            <li key={mainRespItem.bulletPointKey}>
+              {mainRespItem.bulletPointData}
+            </li>
+          ))}
+        </ul>
       </div>
-      <p className="display-position-title">{experienceItem.positionTitle}</p>
-      <ul className="main-resp-list-container">
-        {experienceItem.mainResp.map((mainRespItem) => (
-          <li key={mainRespItem.bulletPointKey}>
-            {mainRespItem.bulletPointData}
-          </li>
-        ))}
-      </ul>
-      <EditButton handleClick={handleGetItemToEdit} />
-      <DeleteButton handleClick={handleGetItemToDelete} />
+      <div className={`button-section ${!isHovered ? "hidden" : ""}`}>
+        <EditButton handleClick={handleGetItemToEdit} />
+        <DeleteButton handleClick={handleGetItemToDelete} />
+      </div>
     </div>
   );
 }

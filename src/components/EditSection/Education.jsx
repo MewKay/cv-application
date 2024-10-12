@@ -14,7 +14,7 @@ function SchoolNameInput({
   return (
     <div className={className}>
       <label htmlFor={inputId} disabled={!editMode}>
-        School Name :
+        School Name<span className="required">*</span> :
       </label>
       <input
         id={inputId}
@@ -38,7 +38,7 @@ function StudyTitleInput({
   return (
     <div className={className}>
       <label htmlFor={inputId} disabled={!editMode}>
-        Title of Study :
+        Title of Study<span className="required">*</span> :
       </label>
       <input
         id={inputId}
@@ -64,7 +64,9 @@ function EducationEndDateInput({
 }) {
   return (
     <fieldset className={className} disabled={!editMode}>
-      <legend disabled={!editMode}>Completion By :</legend>
+      <legend disabled={!editMode}>
+        Completion By<span className="required">*</span> :
+      </legend>
       <MonthSelector
         id={inputId}
         namePartId={namePartId}

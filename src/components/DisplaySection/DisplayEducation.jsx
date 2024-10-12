@@ -1,3 +1,4 @@
+import { useState } from "react";
 import DeleteButton from "./DeleteButton";
 import EditButton from "./EditButton";
 
@@ -9,6 +10,16 @@ function DisplayEducationItem({
   onChangeItemToEdit,
   onDeleteItem,
 }) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  function onMouseEnter() {
+    setIsHovered(true);
+  }
+
+  function onMouseLeave() {
+    setIsHovered(false);
+  }
+
   function handleGetItemToEdit() {
     if (editMode) {
       return;
@@ -27,14 +38,22 @@ function DisplayEducationItem({
   }
 
   return (
-    <div className="education-item">
-      <div className="school-end-date-section">
-        <p className="display-school-name">{educationItem.schoolName}</p>
-        <p className="display-end-date">{educationItem.endDate}</p>
+    <div
+      className="education-item"
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
+      <div className="data-section">
+        <div className="school-end-date-section">
+          <p className="display-school-name">{educationItem.schoolName}</p>
+          <p className="display-end-date">{educationItem.endDate}</p>
+        </div>
+        <p className="display-study-title">{educationItem.studyTitle}</p>
       </div>
-      <p className="display-study-title">{educationItem.studyTitle}</p>
-      <EditButton handleClick={handleGetItemToEdit} />
-      <DeleteButton handleClick={handleGetItemToDelete} />
+      <div className={`button-section ${!isHovered ? "hidden" : ""}`}>
+        <EditButton handleClick={handleGetItemToEdit} />
+        <DeleteButton handleClick={handleGetItemToDelete} />
+      </div>
     </div>
   );
 }

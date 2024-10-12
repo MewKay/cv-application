@@ -12,7 +12,7 @@ function FullNameInput({
   return (
     <div className={className}>
       <label htmlFor={inputId} disabled={!editMode}>
-        Full Name :
+        Full Name<span className="required">*</span> :
       </label>
       <input
         id={inputId}
@@ -36,7 +36,7 @@ function EmailInput({
   return (
     <div className={className}>
       <label htmlFor={inputId} disabled={!editMode}>
-        Email :
+        Email<span className="required">*</span> :
       </label>
       <input
         id={inputId}
@@ -68,6 +68,7 @@ function PhoneNumberInput({
         value={editMode ? phoneNumberData : ""}
         onChange={handlePhoneNumberChange}
         disabled={!editMode}
+        minLength={10}
       />
     </div>
   );

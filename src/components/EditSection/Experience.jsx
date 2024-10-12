@@ -14,7 +14,7 @@ function CompanyNameInput({
   return (
     <div className={className}>
       <label htmlFor={inputId} disabled={!editMode}>
-        Company Name :
+        Company Name<span className="required">*</span> :
       </label>
       <input
         id={inputId}
@@ -38,7 +38,7 @@ function PositionTitleInput({
   return (
     <div className={className}>
       <label htmlFor={inputId} disabled={!editMode}>
-        Position Title :
+        Position Title<span className="required">*</span> :
       </label>
       <input
         id={inputId}
@@ -69,7 +69,9 @@ function WorkDurationInput({
 }) {
   return (
     <fieldset className={className} disabled={!editMode}>
-      <legend disabled={!editMode}>Work Duration :</legend>
+      <legend disabled={!editMode}>
+        Work Duration<span className="required">*</span> :
+      </legend>
 
       <div id="work-start-select">
         <label>From :</label>
